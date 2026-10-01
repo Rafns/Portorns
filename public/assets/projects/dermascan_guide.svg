@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 900" width="100%" height="100%">
+  <defs>
+    <style>
+      .guide-header { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 28px; font-weight: 800; fill: #111827; }
+      .card-item-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 17px; font-weight: 700; fill: #111827; }
+      .card-item-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; fill: #6B7280; line-height: 1.45; }
+      .nav-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10px; font-weight: 600; fill: #9CA3AF; }
+      .nav-label-active { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10px; font-weight: 600; fill: #007AFF; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="450" height="900" rx="44" fill="#FFFFFF"/>
+
+  <!-- Content Container -->
+  <g transform="translate(30, 45)">
+    <!-- Header -->
+    <text x="0" y="30" class="guide-header">Condition guide</text>
+
+    <!-- Card 1: Malignant -->
+    <g transform="translate(0, 60)">
+      <rect width="390" height="175" rx="18" fill="#F9FAFB" stroke="#F3F4F6" stroke-width="1.5"/>
+      <g transform="translate(24, 28)">
+        <text x="0" y="10" class="card-item-title">Malignant</text>
+        <text x="0" y="38" class="card-item-body">High urgency. The model suggests a</text>
+        <text x="0" y="58" class="card-item-body">possible visual match with a malignant skin</text>
+        <text x="0" y="78" class="card-item-body">lesion, such as melanoma or basal cell</text>
+        <text x="0" y="98" class="card-item-body">carcinoma. These conditions require</text>
+        <text x="0" y="118" class="card-item-body">professional medical evaluation.</text>
+      </g>
+    </g>
+
+    <!-- Card 2: Pre-malignant -->
+    <g transform="translate(0, 255)">
+      <rect width="390" height="175" rx="18" fill="#F9FAFB" stroke="#F3F4F6" stroke-width="1.5"/>
+      <g transform="translate(24, 28)">
+        <text x="0" y="10" class="card-item-title">Pre-malignant</text>
+        <text x="0" y="38" class="card-item-body">Elevated urgency. The model suggests a</text>
+        <text x="0" y="58" class="card-item-body">possible visual match with a pre-malignant</text>
+        <text x="0" y="78" class="card-item-body">skin lesion, such as actinic keratosis. These</text>
+        <text x="0" y="98" class="card-item-body">areas can sometimes progress if left</text>
+        <text x="0" y="118" class="card-item-body">untreated.</text>
+      </g>
+    </g>
+
+    <!-- Card 3: Benign & Common -->
+    <g transform="translate(0, 450)">
+      <rect width="390" height="195" rx="18" fill="#F9FAFB" stroke="#F3F4F6" stroke-width="1.5"/>
+      <g transform="translate(24, 28)">
+        <text x="0" y="10" class="card-item-title">Benign &amp; Common</text>
+        <text x="0" y="38" class="card-item-body">Routine urgency. The model suggests a</text>
+        <text x="0" y="58" class="card-item-body">possible visual match with a benign skin</text>
+        <text x="0" y="78" class="card-item-body">growth or lesion, such as a mole,</text>
+        <text x="0" y="98" class="card-item-body">dermatofibroma, or benign keratosis. Most</text>
+        <text x="0" y="118" class="card-item-body">are harmless, but changes should be</text>
+        <text x="0" y="138" class="card-item-body">monitored.</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom Navigation Bar -->
+  <g transform="translate(0, 820)">
+    <line x1="0" y1="0" x2="450" y2="0" stroke="#E5E7EB" stroke-width="1"/>
+    
+    <!-- Home -->
+    <g transform="translate(45, 12)">
+      <path d="M 4 14 L 14 5 L 24 14 L 24 24 L 4 24 Z" fill="none" stroke="#9CA3AF" stroke-width="2"/>
+      <text x="14" y="38" class="nav-label" text-anchor="middle">Home</text>
+    </g>
+
+    <!-- Scan -->
+    <g transform="translate(135, 12)">
+      <path d="M 5 9 C 5 7.9 5.9 7 7 7 L 9 7 L 10.5 4.5 C 10.8 4 11.4 3.7 12 3.7 L 16 3.7 C 16.6 3.7 17.2 4 17.5 4.5 L 19 7 L 21 7 C 22.1 7 23 7.9 23 9 L 23 20 C 23 21.1 22.1 22 21 22 L 7 22 C 5.9 22 5 21.1 5 20 Z" fill="none" stroke="#9CA3AF" stroke-width="2"/>
+      <circle cx="14" cy="14" r="3.5" fill="none" stroke="#9CA3AF" stroke-width="2"/>
+      <text x="14" y="38" class="nav-label" text-anchor="middle">Scan</text>
+    </g>
+
+    <!-- History -->
+    <g transform="translate(225, 12)">
+      <circle cx="14" cy="14" r="9" fill="none" stroke="#9CA3AF" stroke-width="2"/>
+      <path d="M 14 9 L 14 14 L 18 16" fill="none" stroke="#9CA3AF" stroke-width="2"/>
+      <text x="14" y="38" class="nav-label" text-anchor="middle">History</text>
+    </g>
+
+    <!-- Learn (Active) -->
+    <g transform="translate(315, 12)">
+      <path d="M 4 6 C 8 5 12 6 14 8 C 16 6 20 5 24 6 L 24 22 C 20 21 16 22 14 24 C 12 22 8 21 4 22 Z" fill="#007AFF"/>
+      <text x="14" y="38" class="nav-label-active" text-anchor="middle">Learn</text>
+    </g>
+
+    <!-- Profile -->
+    <g transform="translate(405, 12)">
+      <circle cx="14" cy="10" r="5" fill="none" stroke="#9CA3AF" stroke-width="2"/>
+      <path d="M 4 23 C 4 18 8 16 14 16 C 20 16 24 18 24 23" fill="none" stroke="#9CA3AF" stroke-width="2"/>
+      <text x="14" y="38" class="nav-label" text-anchor="middle">Profile</text>
+    </g>
+  </g>
+</svg>

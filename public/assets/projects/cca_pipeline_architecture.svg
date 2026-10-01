@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
+  <defs>
+    <filter id="shadowPipe" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <rect x="20" y="20" width="960" height="560" rx="16" fill="#FFFFFF" filter="url(#shadowPipe)" />
+
+  <text x="500" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#0F172A" text-anchor="middle">
+    Leakage-Controlled Genomic Feature Selection & Validation Pipeline
+  </text>
+  <text x="500" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#64748B" text-anchor="middle">
+    Paired Tumor vs. Normal Transcriptomics (Affymetrix HTA 2.0 & Illumina HumanRef-8)
+  </text>
+
+  <!-- Flowchart Stages -->
+  <g transform="translate(60, 140)">
+    <!-- Stage 1 -->
+    <rect x="0" y="0" width="180" height="260" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+    <rect x="0" y="0" width="180" height="38" rx="12" fill="#3B82F6" />
+    <text x="90" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+      1. COHORT SPLIT
+    </text>
+    <text x="90" y="70" font-family="monospace" font-size="11" font-weight="700" fill="#1E293B" text-anchor="middle">GSE76297 Cohort</text>
+    <text x="90" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">Paired Tumor/Non-Tumor</text>
+    <rect x="15" y="115" width="150" height="55" rx="8" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1" />
+    <text x="90" y="138" font-family="monospace" font-size="11" font-weight="700" fill="#1D4ED8" text-anchor="middle">StratifiedGroupKFold</text>
+    <text x="90" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#3B82F6" text-anchor="middle">Patient-Level Isolation</text>
+    <text x="90" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#475569" text-anchor="middle">Prevents paired sample</text>
+    <text x="90" y="228" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#475569" text-anchor="middle">cross-validation bias</text>
+
+    <!-- Arrow 1 -->
+    <path d="M 190 130 L 220 130 M 212 122 L 222 130 L 212 138" stroke="#3B82F6" stroke-width="2.5" fill="none" stroke-linecap="round" />
+
+    <!-- Stage 2 -->
+    <g transform="translate(230, 0)">
+      <rect x="0" y="0" width="180" height="260" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+      <rect x="0" y="0" width="180" height="38" rx="12" fill="#1E40AF" />
+      <text x="90" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+        2. IN-SPLIT PREFILTER
+      </text>
+      <text x="90" y="70" font-family="monospace" font-size="11" font-weight="700" fill="#1E293B" text-anchor="middle">Leakage Control</text>
+      <rect x="15" y="90" width="150" height="60" rx="8" fill="#F1F5F9" stroke="#E2E8F0" />
+      <text x="90" y="112" font-family="monospace" font-size="10" font-weight="700" fill="#0F172A" text-anchor="middle">Quantile Normalization</text>
+      <text x="90" y="132" font-family="monospace" font-size="10" font-weight="700" fill="#0F172A" text-anchor="middle">Nested DEG Filtering</text>
+      <text x="90" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#475569" text-anchor="middle">Zero information leaked</text>
+      <text x="90" y="202" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#475569" text-anchor="middle">from test fold into</text>
+      <text x="90" y="220" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#475569" text-anchor="middle">feature selection</text>
+    </g>
+
+    <!-- Arrow 2 -->
+    <path d="M 420 130 L 450 130 M 442 122 L 452 130 L 442 138" stroke="#3B82F6" stroke-width="2.5" fill="none" stroke-linecap="round" />
+
+    <!-- Stage 3 -->
+    <g transform="translate(460, 0)">
+      <rect x="0" y="0" width="180" height="260" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+      <rect x="0" y="0" width="180" height="38" rx="12" fill="#0284C7" />
+      <text x="90" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+        3. FEATURE SELECTION
+      </text>
+      <text x="90" y="70" font-family="monospace" font-size="11" font-weight="700" fill="#1E293B" text-anchor="middle">Sparse Ensembles</text>
+      <rect x="15" y="90" width="150" height="28" rx="6" fill="#E0F2FE" />
+      <text x="90" y="108" font-family="monospace" font-size="10" font-weight="700" fill="#0369A1" text-anchor="middle">L1 / LASSO Penalties</text>
+      <rect x="15" y="125" width="150" height="28" rx="6" fill="#E0F2FE" />
+      <text x="90" y="143" font-family="monospace" font-size="10" font-weight="700" fill="#0369A1" text-anchor="middle">SVM-RFE Ranking</text>
+      <rect x="15" y="160" width="150" height="28" rx="6" fill="#E0F2FE" />
+      <text x="90" y="178" font-family="monospace" font-size="10" font-weight="700" fill="#0369A1" text-anchor="middle">Random Forest Gini</text>
+      <text x="90" y="222" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#047857" text-anchor="middle">Identifies Top Biomarkers</text>
+    </g>
+
+    <!-- Arrow 3 -->
+    <path d="M 650 130 L 680 130 M 672 122 L 682 130 L 672 138" stroke="#3B82F6" stroke-width="2.5" fill="none" stroke-linecap="round" />
+
+    <!-- Stage 4 -->
+    <g transform="translate(690, 0)">
+      <rect x="0" y="0" width="180" height="260" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+      <rect x="0" y="0" width="180" height="38" rx="12" fill="#059669" />
+      <text x="90" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+        4. EXTERNAL COHORT
+      </text>
+      <text x="90" y="70" font-family="monospace" font-size="11" font-weight="700" fill="#1E293B" text-anchor="middle">GSE26566 Cohort</text>
+      <text x="90" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">Illumina Platform</text>
+      <rect x="15" y="115" width="150" height="60" rx="8" fill="#ECFDF5" stroke="#A7F3D0" />
+      <text x="90" y="140" font-family="monospace" font-size="11" font-weight="700" fill="#065F46" text-anchor="middle">AUC = 0.99 - 1.00</text>
+      <text x="90" y="158" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#059669" text-anchor="middle">Cross-Platform Generalization</text>
+      <text x="90" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#047857" text-anchor="middle">High clinical confidence</text>
+    </g>
+  </g>
+
+  <!-- Bottom Badges -->
+  <g transform="translate(100, 480)">
+    <rect x="0" y="0" width="240" height="40" rx="8" fill="#EFF6FF" stroke="#BFDBFE" />
+    <text x="120" y="25" font-family="monospace" font-size="11" font-weight="700" fill="#1E40AF" text-anchor="middle">Strict DEG Encapsulation</text>
+
+    <rect x="280" y="0" width="240" height="40" rx="8" fill="#F0FDF4" stroke="#BBF7D0" />
+    <text x="400" y="25" font-family="monospace" font-size="11" font-weight="700" fill="#166534" text-anchor="middle">Zero Data Leakage</text>
+
+    <rect x="560" y="0" width="240" height="40" rx="8" fill="#FAF5FF" stroke="#E9D5FF" />
+    <text x="680" y="25" font-family="monospace" font-size="11" font-weight="700" fill="#6B21A8" text-anchor="middle">Microarray Cross-Validation</text>
+  </g>
+</svg>

@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0B1325"/>
+      <stop offset="50%" stop-color="#182A4A"/>
+      <stop offset="100%" stop-color="#243B61"/>
+    </linearGradient>
+    <linearGradient id="snowGround" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E2EDF8"/>
+      <stop offset="50%" stop-color="#C5D9EC"/>
+      <stop offset="100%" stop-color="#9CB8D4"/>
+    </linearGradient>
+    <linearGradient id="pathGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4B5B6E"/>
+      <stop offset="50%" stop-color="#607287"/>
+      <stop offset="100%" stop-color="#4B5B6E"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Sky & Ambient Background -->
+  <rect width="1200" height="675" fill="url(#skyGrad)"/>
+
+  <!-- Distant Snowy Mountain Peaks -->
+  <polygon points="0,320 180,180 340,320" fill="#1E3252" opacity="0.8"/>
+  <polygon points="180,180 230,225 180,240 140,215" fill="#EBF2FA" opacity="0.9"/>
+
+  <polygon points="260,340 480,140 700,340" fill="#172740" opacity="0.9"/>
+  <polygon points="480,140 540,195 490,215 430,190" fill="#EBF2FA"/>
+
+  <polygon points="620,340 850,170 1080,340" fill="#1B2E4D" opacity="0.85"/>
+  <polygon points="850,170 910,220 860,235 810,210" fill="#EBF2FA" opacity="0.9"/>
+
+  <polygon points="950,330 1120,200 1200,330" fill="#15243B" opacity="0.8"/>
+
+  <!-- Stars & Falling Snowflakes -->
+  <g fill="#FFFFFF" opacity="0.75">
+    <circle cx="120" cy="80" r="1.5"/>
+    <circle cx="280" cy="50" r="2"/>
+    <circle cx="410" cy="95" r="1"/>
+    <circle cx="620" cy="40" r="2.5"/>
+    <circle cx="750" cy="85" r="1.5"/>
+    <circle cx="920" cy="60" r="2"/>
+    <circle cx="1060" cy="110" r="1"/>
+    <circle cx="80" cy="190" r="1.5"/>
+    <circle cx="210" cy="150" r="2"/>
+    <circle cx="340" cy="220" r="1"/>
+    <circle cx="560" cy="170" r="2"/>
+    <circle cx="890" cy="160" r="2.5"/>
+    <circle cx="1140" cy="180" r="1.5"/>
+  </g>
+
+  <!-- Winter Pine Trees (Background layer) -->
+  <g fill="#16293D">
+    <polygon points="70,360 85,270 100,360"/>
+    <polygon points="110,370 125,285 140,370"/>
+    <polygon points="980,360 1000,265 1020,360"/>
+    <polygon points="1030,375 1050,280 1070,375"/>
+    <polygon points="1090,365 1110,270 1130,365"/>
+  </g>
+
+  <!-- Ground Plane (Snow Covered Terrain) -->
+  <rect y="330" width="1200" height="345" fill="url(#snowGround)"/>
+
+  <!-- Isometric / Orthographic Tile Grid Overlay (Low Level 2D Tile Engine) -->
+  <g stroke="#7FA2C7" stroke-width="0.75" stroke-dasharray="2 4" opacity="0.45">
+    <!-- Horizontal Tile Grid Lines -->
+    <line x1="0" y1="360" x2="1200" y2="360"/>
+    <line x1="0" y1="410" x2="1200" y2="410"/>
+    <line x1="0" y1="460" x2="1200" y2="460"/>
+    <line x1="0" y1="510" x2="1200" y2="510"/>
+    <line x1="0" y1="560" x2="1200" y2="560"/>
+    <line x1="0" y1="610" x2="1200" y2="610"/>
+
+    <!-- Vertical Tile Grid Lines -->
+    <line x1="100" y1="330" x2="100" y2="675"/>
+    <line x1="200" y1="330" x2="200" y2="675"/>
+    <line x1="300" y1="330" x2="300" y2="675"/>
+    <line x1="400" y1="330" x2="400" y2="675"/>
+    <line x1="500" y1="330" x2="500" y2="675"/>
+    <line x1="600" y1="330" x2="600" y2="675"/>
+    <line x1="700" y1="330" x2="700" y2="675"/>
+    <line x1="800" y1="330" x2="800" y2="675"/>
+    <line x1="900" y1="330" x2="900" y2="675"/>
+    <line x1="1000" y1="330" x2="1000" y2="675"/>
+    <line x1="1100" y1="330" x2="1100" y2="675"/>
+  </g>
+
+  <!-- Cobblestone Winding "Path of Winter" -->
+  <path d="M 600 330 C 580 390, 480 430, 460 480 C 440 540, 520 610, 510 675" fill="none" stroke="url(#pathGrad)" stroke-width="120" stroke-linecap="round"/>
+  <!-- Cobblestone texture lines -->
+  <path d="M 590 340 C 575 395, 475 435, 455 485 C 435 545, 515 615, 505 675" fill="none" stroke="#7E92A8" stroke-width="4" stroke-dasharray="12 18" opacity="0.6"/>
+
+  <!-- Foreground Pixel-Art Style Pine Trees with Snow on Branches -->
+  <g transform="translate(180, 290)">
+    <polygon points="60,180 0,130 120,130" fill="#1C3827"/>
+    <polygon points="60,130 15,90 105,90" fill="#234631"/>
+    <polygon points="60,90 25,50 95,50" fill="#2E5A3F"/>
+    <polygon points="60,50 35,20 85,20" fill="#3D7553"/>
+    <!-- Snow caps -->
+    <path d="M 60 20 L 35 20 L 60 10 L 85 20 Z" fill="#F0F8FF"/>
+    <path d="M 60 50 L 25 50 C 40 45, 80 45, 95 50 Z" fill="#F0F8FF"/>
+    <path d="M 60 90 L 15 90 C 35 84, 85 84, 105 90 Z" fill="#F0F8FF"/>
+  </g>
+
+  <g transform="translate(860, 310)">
+    <polygon points="60,180 0,130 120,130" fill="#1C3827"/>
+    <polygon points="60,130 15,90 105,90" fill="#234631"/>
+    <polygon points="60,90 25,50 95,50" fill="#2E5A3F"/>
+    <polygon points="60,50 35,20 85,20" fill="#3D7553"/>
+    <path d="M 60 20 L 35 20 L 60 10 L 85 20 Z" fill="#F0F8FF"/>
+    <path d="M 60 50 L 25 50 C 40 45, 80 45, 95 50 Z" fill="#F0F8FF"/>
+    <path d="M 60 90 L 15 90 C 35 84, 85 84, 105 90 Z" fill="#F0F8FF"/>
+  </g>
+
+  <!-- Player Character Sprite on the Winter Path -->
+  <g transform="translate(450, 430)">
+    <!-- Shadow -->
+    <ellipse cx="32" cy="74" rx="22" ry="7" fill="#2D3B4C" opacity="0.6"/>
+    <!-- Cloak / Coat (Winter Blue & Fur) -->
+    <rect x="18" y="24" width="28" height="42" rx="6" fill="#1E3A8A"/>
+    <!-- Scarf / Fur Collar -->
+    <rect x="14" y="20" width="36" height="12" rx="4" fill="#E2E8F0"/>
+    <rect x="36" y="26" width="8" height="18" rx="2" fill="#E2E8F0"/>
+    <!-- Head / Hood -->
+    <circle cx="32" cy="14" r="13" fill="#1E3A8A"/>
+    <circle cx="32" cy="14" r="9" fill="#FBD38D"/>
+    <!-- Staff / Lantern in Hand -->
+    <rect x="52" y="10" width="3" height="60" rx="1.5" fill="#78350F"/>
+    <circle cx="53" cy="12" r="8" fill="#F59E0B" filter="url(#glow)"/>
+    <circle cx="53" cy="12" r="4" fill="#FEF08A"/>
+
+    <!-- Collision Bounding Box Wireframe (Shows OOP Engine Feature) -->
+    <rect x="10" y="2" width="46" height="74" fill="none" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text x="33" y="-5" font-family="-apple-system, monospace" font-size="9" font-weight="700" fill="#38BDF8" text-anchor="middle">BoxCollider2D [x:460, y:480]</text>
+  </g>
+
+  <!-- In-Game Retro Desktop HUD Interface -->
+  <!-- Top Left: Game Info & Health -->
+  <g transform="translate(40, 35)">
+    <rect width="320" height="95" rx="10" fill="#0B132B" fill-opacity="0.9" stroke="#38BDF8" stroke-width="1.5"/>
+    <text x="18" y="26" font-family="-apple-system, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">THE PATH OF WINTER</text>
+    <text x="240" y="26" font-family="-apple-system, monospace" font-size="11" font-weight="700" fill="#38BDF8">v1.2-JAVA</text>
+    
+    <!-- Health Bar -->
+    <text x="18" y="52" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#EF4444">HP</text>
+    <rect x="42" y="42" width="180" height="12" rx="3" fill="#1E293B"/>
+    <rect x="42" y="42" width="155" height="12" rx="3" fill="#EF4444"/>
+    <text x="230" y="52" font-family="-apple-system, monospace" font-size="10" font-weight="600" fill="#FFFFFF">100 / 100</text>
+
+    <!-- Stamina Bar -->
+    <text x="18" y="76" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#10B981">SP</text>
+    <rect x="42" y="66" width="180" height="12" rx="3" fill="#1E293B"/>
+    <rect x="42" y="66" width="130" height="12" rx="3" fill="#10B981"/>
+    <text x="230" y="76" font-family="-apple-system, monospace" font-size="10" font-weight="600" fill="#FFFFFF">85 / 100</text>
+  </g>
+
+  <!-- Top Right: Engine Stats & Performance -->
+  <g transform="translate(850, 35)">
+    <rect width="310" height="95" rx="10" fill="#0B132B" fill-opacity="0.9" stroke="#38BDF8" stroke-width="1.5"/>
+    <text x="18" y="26" font-family="-apple-system, sans-serif" font-size="13" font-weight="800" fill="#38BDF8">PURE JAVA ENGINE STATS</text>
+    <circle cx="280" cy="22" r="5" fill="#10B981"/>
+    
+    <text x="18" y="50" font-family="-apple-system, monospace" font-size="11" fill="#E2E8F0">• GameLoop: 60.0 FPS (16.6ms tick)</text>
+    <text x="18" y="68" font-family="-apple-system, monospace" font-size="11" fill="#E2E8F0">• Rendering: DoubleBuffer AWT/Swing</text>
+    <text x="18" y="86" font-family="-apple-system, monospace" font-size="11" fill="#38BDF8">• Database: MySQL Online (Auth &amp; Save)</text>
+  </g>
+
+  <!-- Bottom Right: Mini Map & Coordinate HUD -->
+  <g transform="translate(980, 500)">
+    <rect width="180" height="140" rx="8" fill="#0B132B" fill-opacity="0.92" stroke="#475569" stroke-width="1.5"/>
+    <text x="14" y="22" font-family="-apple-system, monospace" font-size="10" font-weight="700" fill="#94A3B8">MINIMAP [TILE 16x16]</text>
+    <rect x="14" y="30" width="152" height="75" rx="4" fill="#1E293B"/>
+    <path d="M 90 32 C 85 55, 60 70, 75 105" stroke="#64748B" stroke-width="8" fill="none"/>
+    <circle cx="68" cy="72" r="4" fill="#38BDF8" filter="url(#glow)"/>
+    <text x="14" y="125" font-family="-apple-system, monospace" font-size="10" fill="#38BDF8">Coord: X: 14 | Y: 28</text>
+  </g>
+
+  <!-- Bottom Left: Architecture Badges -->
+  <g transform="translate(40, 595)">
+    <rect width="360" height="42" rx="8" fill="#0B132B" fill-opacity="0.88" stroke="#334155" stroke-width="1"/>
+    <text x="16" y="26" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#F8FAFC">⚡ Custom 2D Pipeline • Tile Collision • MySQL Sync</text>
+  </g>
+</svg>

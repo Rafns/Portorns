@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 900" width="100%" height="100%">
+  <defs>
+    <style>
+      .top-time { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; font-weight: 600; fill: #000000; }
+      .nav-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 17px; font-weight: 700; fill: #111827; }
+      .pre-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; fill: #6B7280; font-weight: 500; }
+      .diagnosis-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 34px; font-weight: 800; fill: #111827; }
+      .stat-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; fill: #6B7280; font-weight: 500; }
+      .stat-val-conf { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 18px; font-weight: 700; fill: #111827; }
+      .stat-val-urg { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 18px; font-weight: 700; fill: #DC2626; }
+      .detail-desc { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; fill: #374151; line-height: 1.45; }
+      .alert-bold { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; font-weight: 700; fill: #1F2937; line-height: 1.4; }
+    </style>
+    
+    <!-- Dermatoscopy Lesion Simulation Pattern -->
+    <radialGradient id="lesionCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#381D15"/>
+      <stop offset="35%" stop-color="#6E3826"/>
+      <stop offset="65%" stop-color="#A45E3B"/>
+      <stop offset="85%" stop-color="#CE8B60"/>
+      <stop offset="100%" stop-color="#F2D2BD"/>
+    </radialGradient>
+    <filter id="lesionBlur">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="35" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="450" height="900" rx="44" fill="#F8FAFC"/>
+
+  <!-- Status Bar -->
+  <text x="40" y="38" class="top-time">10.00</text>
+  <rect x="165" y="18" width="120" height="28" rx="14" fill="#000000"/>
+  <rect x="395" y="26" width="22" height="12" rx="3" fill="none" stroke="#000000" stroke-width="1.5"/>
+  <rect x="397" y="28" width="14" height="8" rx="1.5" fill="#000000"/>
+
+  <!-- Top Navigation Bar -->
+  <g transform="translate(25, 75)">
+    <!-- Back chevron -->
+    <path d="M 12 0 L 2 10 L 12 20" fill="none" stroke="#007AFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="200" y="15" class="nav-title" text-anchor="middle">Result</text>
+  </g>
+
+  <!-- Lesion Photo Card -->
+  <g transform="translate(25, 115)">
+    <rect width="400" height="270" rx="20" fill="#E8C5AF"/>
+    
+    <!-- Dermatoscopic Skin Texture with Organic Pigment Network -->
+    <g filter="url(#lesionBlur)">
+      <ellipse cx="200" cy="135" rx="150" ry="95" fill="url(#lesionCore)"/>
+      <circle cx="160" cy="120" r="60" fill="#241009" opacity="0.8"/>
+      <circle cx="230" cy="145" r="50" fill="#421C11" opacity="0.75"/>
+      <circle cx="180" cy="155" r="45" fill="#5C2615" opacity="0.6"/>
+    </g>
+    <!-- Skin border sheen -->
+    <rect width="400" height="270" rx="20" fill="none" stroke="#000000" stroke-opacity="0.08" stroke-width="1.5"/>
+  </g>
+
+  <!-- Result Details Card -->
+  <g transform="translate(25, 405)">
+    <rect width="400" height="460" rx="24" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.03))"/>
+
+    <g transform="translate(24, 28)">
+      <!-- AI Matching Header -->
+      <text x="0" y="0" class="pre-label">AI screening result suggests a possible visual</text>
+      <text x="0" y="18" class="pre-label">match.</text>
+
+      <!-- Main Diagnosis -->
+      <text x="0" y="65" class="diagnosis-title">Malignant</text>
+
+      <!-- Confidence & Urgency Grid -->
+      <g transform="translate(0, 95)">
+        <!-- Confidence Box -->
+        <rect width="168" height="75" rx="14" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="16" y="28" class="stat-label">Confidence</text>
+        <text x="16" y="55" class="stat-val-conf">95.4%</text>
+
+        <!-- Urgency Box -->
+        <g transform="translate(184, 0)">
+          <rect width="168" height="75" rx="14" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+          <text x="16" y="28" class="stat-label">Urgency</text>
+          <text x="16" y="55" class="stat-val-urg">High</text>
+        </g>
+      </g>
+
+      <!-- Explanation Paragraph -->
+      <g transform="translate(0, 205)">
+        <text x="0" y="0" class="detail-desc">The model suggests a possible visual</text>
+        <text x="0" y="22" class="detail-desc">match with a malignant skin lesion,</text>
+        <text x="0" y="44" class="detail-desc">such as melanoma or basal cell</text>
+        <text x="0" y="66" class="detail-desc">carcinoma. These conditions require</text>
+        <text x="0" y="88" class="detail-desc">professional medical evaluation.</text>
+      </g>
+
+      <!-- Red Alert / Referral Box -->
+      <g transform="translate(0, 325)">
+        <rect width="352" height="80" rx="14" fill="#FEF2F2" stroke="#FEE2E2" stroke-width="1"/>
+        <text x="16" y="30" class="alert-bold">Please consult a certified</text>
+        <text x="16" y="52" class="alert-bold">dermatologist for proper</text>
+        <text x="16" y="70" class="alert-bold">examination.</text>
+      </g>
+    </g>
+  </g>
+</svg>

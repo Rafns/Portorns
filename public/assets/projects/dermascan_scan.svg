@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 900" width="100%" height="100%">
+  <defs>
+    <style>
+      .status-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; font-weight: 600; fill: #000000; }
+      .screen-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 32px; font-weight: 800; fill: #111827; }
+      .screen-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; fill: #6B7280; line-height: 1.4; }
+      .card-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 21px; font-weight: 800; fill: #FFFFFF; line-height: 1.25; }
+      .card-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; fill: #9CA3AF; line-height: 1.4; }
+      .btn-camera { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 15px; font-weight: 600; fill: #FFFFFF; }
+      .disc-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; fill: #6B7280; line-height: 1.4; }
+      .section-hdr { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 18px; font-weight: 700; fill: #111827; }
+      .nav-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10px; font-weight: 600; fill: #9CA3AF; }
+      .nav-label-active { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10px; font-weight: 600; fill: #007AFF; }
+    </style>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="450" height="900" rx="44" fill="#FFFFFF"/>
+
+  <!-- Status Bar -->
+  <text x="40" y="38" class="status-text">10.00</text>
+  <!-- Dynamic Island -->
+  <rect x="165" y="18" width="120" height="28" rx="14" fill="#000000"/>
+  <!-- Wifi & Battery Icons -->
+  <circle cx="380" cy="32" r="2.5" fill="#000000"/>
+  <rect x="395" y="26" width="22" height="12" rx="3" fill="none" stroke="#000000" stroke-width="1.5"/>
+  <rect x="397" y="28" width="14" height="8" rx="1.5" fill="#000000"/>
+
+  <!-- Main Content Area -->
+  <g transform="translate(30, 85)">
+    <!-- Title -->
+    <text x="0" y="30" class="screen-title">Scan</text>
+    <!-- Subtitle -->
+    <text x="0" y="65" class="screen-sub">Take or upload a clear photo of the skin area.</text>
+    <text x="0" y="85" class="screen-sub">The flow is short and you can retake before</text>
+    <text x="0" y="105" class="screen-sub">analysis.</text>
+
+    <!-- Black Scan Card -->
+    <g transform="translate(0, 130)">
+      <rect width="390" height="300" rx="20" fill="#050505"/>
+      <!-- Blue Camera Icon -->
+      <g transform="translate(24, 24)">
+        <path d="M 6 10 C 6 8.9 6.9 8 8 8 L 11 8 L 12.5 5.5 C 12.8 5 13.4 4.7 14 4.7 L 20 4.7 C 20.6 4.7 21.2 5 21.5 5.5 L 23 8 L 26 8 C 27.1 8 28 8.9 28 10 L 28 22 C 28 23.1 27.1 24 26 24 L 8 24 C 6.9 24 6 23.1 6 22 Z" fill="none" stroke="#007AFF" stroke-width="2"/>
+        <circle cx="17" cy="16" r="4.5" fill="none" stroke="#007AFF" stroke-width="2"/>
+      </g>
+      <!-- Card Heading -->
+      <text x="24" y="95" class="card-title">Center the lesion.</text>
+      <text x="24" y="122" class="card-title">Keep the phone</text>
+      <text x="24" y="149" class="card-title">steady.</text>
+
+      <!-- Card Subtext -->
+      <text x="24" y="185" class="card-sub">Use bright, even lighting and keep the</text>
+      <text x="24" y="203" class="card-sub">entire visible area inside the frame.</text>
+
+      <!-- Open Camera Button -->
+      <rect x="24" y="225" width="342" height="50" rx="25" fill="#007AFF"/>
+      <text x="195" y="256" class="btn-camera" text-anchor="middle">Open Camera</text>
+    </g>
+
+    <!-- Disclaimer Box -->
+    <g transform="translate(0, 455)">
+      <rect width="390" height="75" rx="14" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+      <text x="18" y="26" class="disc-text">DermaScan is an informational screening</text>
+      <text x="18" y="44" class="disc-text">assistant and is not a substitute for professional</text>
+      <text x="18" y="62" class="disc-text">medical advice.</text>
+    </g>
+
+    <!-- Image guidance header -->
+    <text x="0" y="565" class="section-hdr">Image guidance</text>
+  </g>
+
+  <!-- Bottom Navigation Bar -->
+  <g transform="translate(0, 820)">
+    <line x1="0" y1="0" x2="450" y2="0" stroke="#E5E7EB" stroke-width="1"/>
+    
+    <!-- Home -->
+    <g transform="translate(45, 12)">
+      <path d="M 4 14 L 14 5 L 24 14 L 24 24 L 4 24 Z" fill="none" stroke="#9CA3AF" stroke-width="2"/>
+      <text x="14" y="38" class="nav-label" text-anchor="middle">Home</text>
+    </g>
+
+    <!-- Scan (Active) -->
+    <g transform="translate(135, 12)">
+      <path d="M 5 9 C 5 7.9 5.9 7 7 7 L 9 7 L 10.5 4.5 C 10.8 4 11.4 3.7 12 3.7 L 16 3.7 C 16.6 3.7 17.2 4 17.5 4.5 L 19 7 L 21 7 C 22.1 7 23 7.9 23 9 L 23 20 C 23 21.1 22.1 22 21 22 L 7 22 C 5.9 22 5 21.1 5 20 Z" fill="#007AFF"/>
+      <circle cx="14" cy="14" r="3.5" fill="#FFFFFF"/>
+      <text x="14" y="38" class="nav-label-active" text-anchor="middle">Scan</text>
+    </g>
+
+    <!-- History -->
+    <g transform="translate(225, 12)">
+      <circle cx="14" cy="14" r="9" fill="none" stroke="#9CA3AF" stroke-width="2"/>
+      <path d="M 14 9 L 14 14 L 18 16" fill="none" stroke="#9CA3AF" stroke-width="2"/>
+      <text x="14" y="38" class="nav-label" text-anchor="middle">History</text>
+    </g>
+
+    <!-- Learn -->
+    <g transform="translate(315, 12)">
+      <path d="M 4 6 C 8 5 12 6 14 8 C 16 6 20 5 24 6 L 24 22 C 20 21 16 22 14 24 C 12 22 8 21 4 22 Z" fill="none" stroke="#9CA3AF" stroke-width="2"/>
+      <text x="14" y="38" class="nav-label" text-anchor="middle">Learn</text>
+    </g>
+
+    <!-- Profile -->
+    <g transform="translate(405, 12)">
+      <circle cx="14" cy="10" r="5" fill="none" stroke="#9CA3AF" stroke-width="2"/>
+      <path d="M 4 23 C 4 18 8 16 14 16 C 20 16 24 18 24 23" fill="none" stroke="#9CA3AF" stroke-width="2"/>
+      <text x="14" y="38" class="nav-label" text-anchor="middle">Profile</text>
+    </g>
+  </g>
+</svg>

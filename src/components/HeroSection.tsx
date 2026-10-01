@@ -1,0 +1,352 @@
+import React, { useState, useEffect, useRef } from 'react';
+
+const TRIPTYCH_IMAGE_URL = '/assets/monochrome_highway_trees.jpg';
+
+interface HeroSectionProps {
+  onExploreProjects: () => void;
+  onLearnMore: () => void;
+}
+
+export const HeroSection: React.FC<HeroSectionProps> = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  // Entrance animation state (stagger trigger)
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Mouse parallax state (-1 to 1)
+  const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
+  const [scrollY, setScrollY] = useState(0);
+
+  // Trigger stagger entrance on mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 80);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Scroll listener for subtle vertical parallax
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Mouse move listener for smooth 3D parallax depth
+  useEffect(() => {
+    let animationFrameId: number;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const { innerWidth, innerHeight } = window;
+      targetX = (e.clientX / innerWidth - 0.5) * 2;
+      targetY = (e.clientY / innerHeight - 0.5) * 2;
+    };
+
+    const animateParallax = () => {
+      // Smooth lerp damping for luxury weight
+      currentX += (targetX - currentX) * 0.08;
+      currentY += (targetY - currentY) * 0.08;
+      setMouseOffset({ x: currentX, y: currentY });
+      animationFrameId = requestAnimationFrame(animateParallax);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    animationFrameId = requestAnimationFrame(animateParallax);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  // Procedural living atmospheric fog/mist & slow topographic lines canvas
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animId: number;
+    let time = 0;
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+    };
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Fog puff particle clusters that drift across the hills
+    const fogPuffs = Array.from({ length: 9 }).map((_, i) => ({
+      x: (i / 9) * 1200,
+      y: 180 + Math.sin(i * 1.5) * 90,
+      radius: 180 + (i % 4) * 60,
+      speed: 0.18 + (i % 3) * 0.12,
+      opacity: 0.045 + (i % 3) * 0.025,
+      driftY: (i % 2 === 0 ? 1 : -1) * 0.06,
+    }));
+
+    const render = () => {
+      time += 0.007;
+      const width = canvas.width;
+      const height = canvas.height;
+
+      ctx.clearRect(0, 0, width, height);
+
+      // 1. Draw slow volumetric mountain fog drifting across the landscape
+      fogPuffs.forEach((fog) => {
+        fog.x += fog.speed;
+        if (fog.x - fog.radius > width) {
+          fog.x = -fog.radius;
+        }
+
+        const currentY = fog.y + Math.sin(time + fog.x * 0.002) * 25;
+        const grad = ctx.createRadialGradient(
+          fog.x,
+          currentY,
+          fog.radius * 0.1,
+          fog.x,
+          currentY,
+          fog.radius
+        );
+        grad.addColorStop(0, `rgba(240, 242, 248, ${fog.opacity * 1.1})`);
+        grad.addColorStop(0.5, `rgba(220, 224, 230, ${fog.opacity * 0.5})`);
+        grad.addColorStop(1, 'rgba(200, 205, 215, 0)');
+
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(fog.x, currentY, fog.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // 2. Draw organic topographic contour curves that gently undulate across the ridges
+      ctx.lineWidth = 1.1;
+      const contourLinesCount = 4;
+      for (let c = 0; c < contourLinesCount; c++) {
+        const baseY = height * 0.45 + c * (height * 0.1);
+        const alpha = 0.035 + Math.sin(time * 0.8 + c) * 0.015;
+        ctx.strokeStyle = `rgba(240, 245, 255, ${Math.max(0.01, alpha)})`;
+        ctx.beginPath();
+
+        for (let x = 0; x <= width; x += 15) {
+          const wave1 = Math.sin(x * 0.003 + time * 0.5 + c * 0.8) * 18;
+          const wave2 = Math.cos(x * 0.006 - time * 0.3 + c) * 10;
+          const y = baseY + wave1 + wave2;
+          if (x === 0) {
+            ctx.moveTo(x, y);
+          } else {
+            ctx.lineTo(x, y);
+          }
+        }
+        ctx.stroke();
+      }
+
+      animId = requestAnimationFrame(render);
+    };
+
+    animId = requestAnimationFrame(render);
+
+    return () => {
+      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animId);
+    };
+  }, []);
+
+  const slashPattern =
+    '////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////';
+
+  return (
+    <section
+      id="beranda"
+      ref={containerRef}
+      className="relative z-10 min-h-screen w-full bg-black text-white flex flex-col justify-center pt-24 sm:pt-28 pb-8 px-3 sm:px-6 md:px-8 select-none overflow-hidden"
+    >
+      {/* Main Triptych Canvas (3 Panels with continuous panoramic living landscape) */}
+      <div className="relative w-full h-[72vh] sm:h-[78vh] md:h-[82vh] rounded-md overflow-hidden border-2 sm:border-4 border-black bg-[#0A0A0A] shadow-2xl">
+        {/* Dynamic Landscape Layer with mouse & scroll parallax */}
+        <div
+          className="absolute -inset-4 sm:-inset-6 z-0 transition-transform duration-300 ease-out will-change-transform"
+          style={{
+            transform: `translate3d(${mouseOffset.x * -16}px, ${
+              mouseOffset.y * -12 + scrollY * 0.12
+            }px, 0) scale(1.08)`,
+          }}
+        >
+          {/* Panoramic Monochrome Highway Road Landscape */}
+          <img
+            src={TRIPTYCH_IMAGE_URL}
+            alt="Cinematic monochrome highway stretching into the distance through tree canopy"
+            className="w-full h-full object-cover object-center filter brightness-[0.95] contrast-[1.08]"
+          />
+
+          {/* Living Atmospheric Canvas (Moving Mist/Fog & Topographic Contours) */}
+          <canvas
+            ref={canvasRef}
+            className="absolute inset-0 w-full h-full pointer-events-none mix-blend-screen opacity-90"
+          />
+
+          {/* User Requested Bottom Gradient Overlay: linear-gradient(to top, rgba(0,0,0,.65), transparent 50%) */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                'linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.45) 24%, rgba(0, 0, 0, 0.15) 38%, transparent 55%)',
+            }}
+          />
+
+          {/* Subtle top atmosphere shade for contrast */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-transparent pointer-events-none" />
+        </div>
+
+        {/* 3-Column Triptych Grid Overlay with Staggered Entrance Animation */}
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 divide-y-2 md:divide-y-0 md:divide-x-4 divide-black h-full pointer-events-none">
+          {/* Panel 1 (Staggered Delay 1) */}
+          <div
+            className={`relative h-full p-5 sm:p-7 md:p-8 flex flex-col justify-end transition-all duration-1000 ease-out ${
+              isLoaded
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-12'
+            }`}
+            style={{ transitionDelay: '120ms' }}
+          >
+            {/* Bottom Left: Microcopy with enhanced contrast */}
+            <div
+              className="transition-transform duration-300 ease-out will-change-transform"
+              style={{
+                transform: `translate3d(${mouseOffset.x * 6}px, ${
+                  mouseOffset.y * 4
+                }px, 0)`,
+              }}
+            >
+              <p className="font-sans font-bold text-xs sm:text-[13px] text-[#F2EAD3] leading-snug tracking-tight max-w-[220px] drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
+                Crafting experiences
+                <br />
+                that elevate, engage,
+                <br />
+                and resonate.
+              </p>
+            </div>
+          </div>
+
+          {/* Panel 2 (Staggered Delay 2) */}
+          <div
+            className={`relative h-full p-5 sm:p-7 md:p-8 flex flex-col justify-end transition-all duration-1000 ease-out ${
+              isLoaded
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-12'
+            }`}
+            style={{ transitionDelay: '300ms' }}
+          >
+            {/* Bottom Left: Microcopy with enhanced contrast */}
+            <div
+              className="transition-transform duration-300 ease-out will-change-transform"
+              style={{
+                transform: `translate3d(${mouseOffset.x * 6}px, ${
+                  mouseOffset.y * 4
+                }px, 0)`,
+              }}
+            >
+              <p className="font-sans font-bold text-xs sm:text-[13px] text-[#F2EAD3] leading-snug tracking-tight max-w-[240px] drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
+                bridging the space between
+                <br />
+                bold concepts and digital
+                <br />
+                reality.
+              </p>
+            </div>
+          </div>
+
+          {/* Panel 3 (Staggered Delay 3) */}
+          <div
+            className={`relative h-full p-5 sm:p-7 md:p-8 flex flex-col justify-end transition-all duration-1000 ease-out ${
+              isLoaded
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-12'
+            }`}
+            style={{ transitionDelay: '480ms' }}
+          >
+            {/* Bottom Left: THE NEW FRONTIER with enhanced contrast */}
+            <div
+              className="transition-transform duration-300 ease-out will-change-transform"
+              style={{
+                transform: `translate3d(${mouseOffset.x * 6}px, ${
+                  mouseOffset.y * 4
+                }px, 0)`,
+              }}
+            >
+              <span className="font-mono text-xs sm:text-sm font-semibold tracking-widest text-[#FFFFFF] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
+                THE NEW FRONTIER
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Giant Centered Typography across all 3 panels: "HI I'M RAFA" with Luxury Reveal from Bottom */}
+        <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none px-2 sm:px-6 overflow-hidden">
+          <div
+            className={`transition-all duration-1000 ease-out will-change-transform ${
+              isLoaded
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-24'
+            }`}
+            style={{
+              transitionDelay: '700ms',
+              transform: isLoaded
+                ? `translate3d(${mouseOffset.x * 12}px, ${
+                    mouseOffset.y * 9
+                  }px, 0)`
+                : undefined,
+            }}
+          >
+            {/* Fixed Spacing & Letter-spacing: Clean gap separation between HI, I'M, and RAFA */}
+            <h1
+              id="hero-title"
+              className="font-display flex items-center justify-center gap-3 sm:gap-6 md:gap-8 lg:gap-11 font-black text-[#FFFFFF] drop-shadow-[0_14px_45px_rgba(0,0,0,0.7)] select-none text-center leading-none whitespace-nowrap text-4xl sm:text-6xl md:text-8xl lg:text-[8.4rem] xl:text-[9.5rem]"
+              style={{
+                fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
+              }}
+            >
+              {/* Word 1: HI with generous breathing room */}
+              <span
+                className="inline-block"
+                style={{ letterSpacing: '-0.015em' }}
+              >
+                HI
+              </span>
+
+              {/* Word 2: I'M with distinct spacing */}
+              <span
+                className="inline-block"
+                style={{ letterSpacing: '-0.015em' }}
+              >
+                I'M
+              </span>
+
+              {/* Word 3: RAFA with proper letter-spacing so letters don't stick */}
+              <span
+                className="inline-block"
+                style={{ letterSpacing: '-0.015em' }}
+              >
+                RAFA
+              </span>
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Architectural Hatch Pattern Stripe */}
+      <div className="w-full overflow-hidden text-neutral-600 font-mono text-[11px] sm:text-xs select-none opacity-60 leading-none truncate py-2">
+        {slashPattern}
+      </div>
+    </section>
+  );
+};

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" width="100%" height="100%">
+  <!-- Transparent Background to blend seamlessly with dark cards -->
+
+  <!-- Center Group -->
+  <g transform="translate(45, 120)">
+    <!-- BNCC Official Brand Cyan #00A4E4 -->
+    <!-- BNCC Logotype -->
+    <g fill="#00A4E4">
+      <!-- Letter B with italic slant -->
+      <path d="M 15 280 L 65 20 C 65 20 135 20 170 20 C 205 20 226 36 218 72 C 212 102 190 118 158 124 C 196 128 210 150 200 190 C 188 238 155 266 102 266 L 36 266 L 32 280 Z M 88 106 C 106 106 124 102 128 84 C 132 68 120 58 102 58 L 74 58 L 64 106 Z M 72 226 L 102 226 C 124 226 142 220 148 196 C 152 178 138 168 116 168 L 82 168 Z" />
+      
+      <!-- B bottom sweep curve -->
+      <path d="M 32 280 L 165 280 C 185 280 200 268 206 248 C 210 230 188 230 170 230 L 52 230 Z" />
+
+      <!-- Letter N -->
+      <path d="M 185 280 L 235 20 L 290 20 L 244 196 L 302 196 L 338 20 L 394 20 L 344 280 L 288 280 L 328 102 L 270 102 L 234 280 Z" />
+
+      <!-- Letter C 1 -->
+      <path d="M 470 20 C 538 20 560 66 552 112 L 492 112 C 496 88 482 62 450 62 C 412 62 382 102 374 158 C 366 214 388 238 428 238 C 460 238 476 216 482 188 L 542 188 C 530 238 495 280 422 280 C 345 280 306 214 322 134 C 336 54 392 20 470 20 Z" />
+
+      <!-- Letter C 2 -->
+      <path d="M 605 20 C 673 20 695 66 687 112 L 627 112 C 631 88 617 62 585 62 C 547 62 517 102 509 158 C 501 214 523 238 563 238 C 595 238 611 216 617 188 L 677 188 C 665 238 630 280 557 280 C 480 280 441 214 457 134 C 471 54 527 20 605 20 Z" />
+    </g>
+
+    <!-- Right Side: LEARNING & TRAINING in cyan blue #00A4E4 -->
+    <g transform="translate(715, 10)" fill="#00A4E4">
+      <!-- LEARNING text -->
+      <text
+        x="0"
+        y="80"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-weight="900"
+        font-style="italic"
+        font-size="74"
+        letter-spacing="2"
+      >LEARNING</text>
+
+      <!-- Divider: Line, Ampersand, Line -->
+      <line x1="0" y1="126" x2="115" y2="126" stroke="#00A4E4" stroke-width="6" stroke-linecap="butt" />
+      <text
+        x="145"
+        y="142"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-weight="900"
+        font-style="italic"
+        font-size="58"
+        text-anchor="middle"
+      >&amp;</text>
+      <line x1="175" y1="126" x2="295" y2="126" stroke="#00A4E4" stroke-width="6" stroke-linecap="butt" />
+
+      <!-- TRAINING text -->
+      <text
+        x="2"
+        y="230"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-weight="900"
+        font-style="italic"
+        font-size="74"
+        letter-spacing="2"
+      >TRAINING</text>
+    </g>
+  </g>
+</svg>

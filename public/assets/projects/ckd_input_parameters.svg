@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <style>
+      .title-section { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; font-weight: 700; fill: #FFFFFF; letter-spacing: 0.5px; }
+      .label-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 600; fill: #2D3748; }
+      .val-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; font-size: 13px; font-weight: 600; fill: #1A202C; }
+      .dropdown-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; font-weight: 600; fill: #FFFFFF; }
+      .btn-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; font-weight: 700; fill: #FFFFFF; letter-spacing: 1px; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" rx="12" fill="#E8EFEA"/>
+
+  <!-- ==================== SECTION 1: ANTROPOMETRI ==================== -->
+  <rect x="25" y="20" width="1150" height="34" rx="6" fill="#588168"/>
+  <text x="45" y="42" class="title-section">📏 ANTROPOMETRI</text>
+
+  <!-- BMI Field -->
+  <text x="28" y="74" class="label-text">📊 BMI</text>
+  <rect x="25" y="82" width="1150" height="34" rx="6" fill="#759C86"/>
+  <text x="45" y="104" class="val-text">25,00</text>
+  <!-- Stepper buttons -->
+  <rect x="1115" y="87" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="1122" y="103" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">−</text>
+  <rect x="1143" y="87" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="1149" y="103" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">+</text>
+
+  <!-- ==================== SECTION 2: TEKANAN DARAH ==================== -->
+  <rect x="25" y="132" width="1150" height="34" rx="6" fill="#588168"/>
+  <text x="45" y="154" class="title-section">💖 TEKANAN DARAH</text>
+
+  <!-- Systolic BP -->
+  <text x="28" y="184" class="label-text">🔼 Systolic BP (mmHg)</text>
+  <rect x="25" y="192" width="560" height="34" rx="6" fill="#759C86"/>
+  <text x="45" y="214" class="val-text">120</text>
+  <rect x="525" y="197" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="532" y="213" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">−</text>
+  <rect x="553" y="197" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="559" y="213" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">+</text>
+
+  <!-- Diastolic BP -->
+  <text x="618" y="184" class="label-text">🔽 Diastolic BP (mmHg)</text>
+  <rect x="615" y="192" width="560" height="34" rx="6" fill="#759C86"/>
+  <text x="635" y="214" class="val-text">80</text>
+  <rect x="1115" y="197" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="1122" y="213" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">−</text>
+  <rect x="1143" y="197" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="1149" y="213" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">+</text>
+
+  <!-- ==================== SECTION 3: PARAMETER LABORATORIUM GINJAL ==================== -->
+  <rect x="25" y="242" width="1150" height="34" rx="6" fill="#588168"/>
+  <text x="45" y="264" class="title-section">🧪 PARAMETER LABORATORIUM GINJAL</text>
+
+  <!-- Row 1: 4 columns -->
+  <!-- Col 1: Serum Creatinine -->
+  <text x="28" y="294" class="label-text">🧪 Serum Creatinine (mg/dL)</text>
+  <rect x="25" y="302" width="272" height="34" rx="6" fill="#759C86"/>
+  <text x="40" y="324" class="val-text">1,00</text>
+  <rect x="240" y="307" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="247" y="323" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">−</text>
+  <rect x="268" y="307" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="274" y="323" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">+</text>
+
+  <!-- Col 2: Phosphorus -->
+  <text x="320" y="294" class="label-text">🔷 Phosphorus (mg/dL)</text>
+  <rect x="317" y="302" width="272" height="34" rx="6" fill="#759C86"/>
+  <text x="332" y="324" class="val-text">3,50</text>
+  <rect x="532" y="307" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="539" y="323" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">−</text>
+  <rect x="560" y="307" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="566" y="323" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">+</text>
+
+  <!-- Col 3: Calcium -->
+  <text x="612" y="294" class="label-text">🧪 Calcium (mg/dL)</text>
+  <rect x="609" y="302" width="272" height="34" rx="6" fill="#759C86"/>
+  <text x="624" y="324" class="val-text">9,50</text>
+  <rect x="824" y="307" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="831" y="323" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">−</text>
+  <rect x="852" y="307" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="858" y="323" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">+</text>
+
+  <!-- Col 4: BUN/Creatinine Ratio -->
+  <text x="904" y="294" class="label-text">📊 BUN/Creatinine Ratio</text>
+  <rect x="901" y="302" width="274" height="34" rx="6" fill="#759C86"/>
+  <text x="916" y="324" class="val-text">15,00</text>
+  <rect x="1117" y="307" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="1124" y="323" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">−</text>
+  <rect x="1145" y="307" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="1151" y="323" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">+</text>
+
+  <!-- Row 2: 3 columns -->
+  <!-- Col 1: Albumin Serum -->
+  <text x="28" y="354" class="label-text">🟠 Albumin Serum (g/dL)</text>
+  <rect x="25" y="362" width="365" height="34" rx="6" fill="#759C86"/>
+  <text x="40" y="384" class="val-text">4,00</text>
+  <rect x="333" y="367" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="340" y="383" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">−</text>
+  <rect x="361" y="367" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="367" y="383" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">+</text>
+
+  <!-- Col 2: Bicarbonate -->
+  <text x="420" y="354" class="label-text">🧪 Bicarbonate (mmol/L)</text>
+  <rect x="417" y="362" width="365" height="34" rx="6" fill="#759C86"/>
+  <text x="432" y="384" class="val-text">24,00</text>
+  <rect x="725" y="367" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="732" y="383" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">−</text>
+  <rect x="753" y="367" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="759" y="383" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">+</text>
+
+  <!-- Col 3: Uric Acid -->
+  <text x="812" y="354" class="label-text">🧪 Uric Acid (mg/dL)</text>
+  <rect x="809" y="362" width="366" height="34" rx="6" fill="#759C86"/>
+  <text x="824" y="384" class="val-text">5,00</text>
+  <rect x="1117" y="367" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="1124" y="383" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">−</text>
+  <rect x="1145" y="367" width="22" height="24" rx="4" fill="#1C2128"/>
+  <text x="1151" y="383" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">+</text>
+
+  <!-- ==================== SECTION 4: KOMORBID & GAYA HIDUP ==================== -->
+  <rect x="25" y="414" width="1150" height="34" rx="6" fill="#588168"/>
+  <text x="45" y="436" class="title-section">🩸 KOMORBID &amp; GAYA HIDUP</text>
+
+  <!-- Col 1: Diabetes Diagnosed -->
+  <text x="28" y="466" class="label-text">🏷️ Diabetes Diagnosed</text>
+  <rect x="25" y="474" width="560" height="34" rx="6" fill="#1C2128"/>
+  <text x="45" y="496" class="dropdown-text">No</text>
+  <!-- Chevron Down -->
+  <path d="M 555 490 L 562 497 L 569 490" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Col 2: Ever Smoked -->
+  <text x="618" y="466" class="label-text">🚬 Ever Smoked</text>
+  <rect x="615" y="474" width="560" height="34" rx="6" fill="#1C2128"/>
+  <text x="635" y="496" class="dropdown-text">No</text>
+  <!-- Chevron Down -->
+  <path d="M 1145 490 L 1152 497 L 1159 490" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- ==================== SECTION 5: ANALYZE & PREDICT BUTTON ==================== -->
+  <rect x="25" y="534" width="1150" height="42" rx="6" fill="#F44336"/>
+  <text x="600" y="560" class="btn-text" text-anchor="middle">🔍 ANALYZE &amp; PREDICT</text>
+</svg>

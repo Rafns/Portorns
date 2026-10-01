@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="100%" height="100%">
+  <defs>
+    <!-- Background Frame -->
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#FFFFFF" />
+      <stop offset="100%" stopColor="#F8FAFC" />
+    </linearGradient>
+
+    <!-- Color scale gradient for colorbar -->
+    <linearGradient id="colorbarGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stopColor="#FFFFD9" />
+      <stop offset="25%" stopColor="#C7E9B4" />
+      <stop offset="50%" stopColor="#41B6C4" />
+      <stop offset="75%" stopColor="#225EA8" />
+      <stop offset="100%" stopColor="#081D58" />
+    </linearGradient>
+
+    <!-- Cell Colors: High deep blue ~1.000, Slightly lighter ~0.980 -->
+    <filter id="shadowDrop" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Outer White Chart Canvas -->
+  <rect width="960" height="560" rx="16" fill="url(#cardBg)" filter="url(#shadowDrop)" />
+
+  <!-- Plot Title -->
+  <text x="440" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#0F172A" text-anchor="middle" letter-spacing="0.2">
+    Comparative Model Performance - Patient-Level CV AUC
+  </text>
+
+  <!-- Y-Axis Label: Feature Selection Pipeline -->
+  <g transform="translate(68, 250) rotate(-90)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#475569" text-anchor="middle">
+      Feature Selection Pipeline
+    </text>
+  </g>
+
+  <!-- X-Axis Label: Model -->
+  <text x="440" y="475" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#475569" text-anchor="middle">
+    Model
+  </text>
+
+  <!-- Heatmap Matrix Grid -->
+  <!-- 6 columns: LightGBM, Logistic Regression, Naive Bayes, Random Forest, SVM, XGBoost -->
+  <!-- 2 rows: LASSO, SVM-RFE -->
+  <!-- Top-left of grid is at x=150, y=100. Cell size: 100w x 140h -->
+
+  <!-- Y Row Labels -->
+  <text x="135" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#334155" text-anchor="end">
+    LASSO
+  </text>
+  <text x="135" y="315" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#334155" text-anchor="end">
+    SVM-RFE
+  </text>
+
+  <!-- Grid Cells Row 1: LASSO -->
+  <!-- Cell 1: LightGBM (0.994) -->
+  <rect x="150" y="105" width="98" height="138" fill="#0C2C84" stroke="#FFFFFF" strokeWidth="2" />
+  <text x="199" y="178" font-family="monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">0.994</text>
+
+  <!-- Cell 2: Logistic Regression (0.999) -->
+  <rect x="250" y="105" width="98" height="138" fill="#09206A" stroke="#FFFFFF" strokeWidth="2" />
+  <text x="299" y="178" font-family="monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">0.999</text>
+
+  <!-- Cell 3: Naive Bayes (0.999) -->
+  <rect x="350" y="105" width="98" height="138" fill="#09206A" stroke="#FFFFFF" strokeWidth="2" />
+  <text x="399" y="178" font-family="monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">0.999</text>
+
+  <!-- Cell 4: Random Forest (0.999) -->
+  <rect x="450" y="105" width="98" height="138" fill="#09206A" stroke="#FFFFFF" strokeWidth="2" />
+  <text x="499" y="178" font-family="monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">0.999</text>
+
+  <!-- Cell 5: SVM (1.000) -->
+  <rect x="550" y="105" width="98" height="138" fill="#081D58" stroke="#FFFFFF" strokeWidth="2" />
+  <text x="599" y="178" font-family="monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">1.000</text>
+
+  <!-- Cell 6: XGBoost (0.993) -->
+  <rect x="650" y="105" width="98" height="138" fill="#153E90" stroke="#FFFFFF" strokeWidth="2" />
+  <text x="699" y="178" font-family="monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">0.993</text>
+
+  <!-- Grid Cells Row 2: SVM-RFE -->
+  <!-- Cell 1: LightGBM (0.980) -->
+  <rect x="150" y="245" width="98" height="138" fill="#225EA8" stroke="#FFFFFF" strokeWidth="2" />
+  <text x="199" y="318" font-family="monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">0.980</text>
+
+  <!-- Cell 2: Logistic Regression (1.000) -->
+  <rect x="250" y="245" width="98" height="138" fill="#081D58" stroke="#FFFFFF" strokeWidth="2" />
+  <text x="299" y="318" font-family="monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">1.000</text>
+
+  <!-- Cell 3: Naive Bayes (1.000) -->
+  <rect x="350" y="245" width="98" height="138" fill="#081D58" stroke="#FFFFFF" strokeWidth="2" />
+  <text x="399" y="318" font-family="monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">1.000</text>
+
+  <!-- Cell 4: Random Forest (1.000) -->
+  <rect x="450" y="245" width="98" height="138" fill="#081D58" stroke="#FFFFFF" strokeWidth="2" />
+  <text x="499" y="318" font-family="monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">1.000</text>
+
+  <!-- Cell 5: SVM (1.000) -->
+  <rect x="550" y="245" width="98" height="138" fill="#081D58" stroke="#FFFFFF" strokeWidth="2" />
+  <text x="599" y="318" font-family="monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">1.000</text>
+
+  <!-- Cell 6: XGBoost (0.984) -->
+  <rect x="650" y="245" width="98" height="138" fill="#1E549F" stroke="#FFFFFF" strokeWidth="2" />
+  <text x="699" y="318" font-family="monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">0.984</text>
+
+  <!-- X Column Labels (Angled at 30 deg) -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#334155">
+    <text x="180" y="405" transform="rotate(30, 180, 405)" text-anchor="start">LightGBM</text>
+    <text x="270" y="405" transform="rotate(30, 270, 405)" text-anchor="start">Logistic Regression</text>
+    <text x="380" y="405" transform="rotate(30, 380, 405)" text-anchor="start">Naive Bayes</text>
+    <text x="480" y="405" transform="rotate(30, 480, 405)" text-anchor="start">Random Forest</text>
+    <text x="590" y="405" transform="rotate(30, 590, 405)" text-anchor="start">SVM</text>
+    <text x="685" y="405" transform="rotate(30, 685, 405)" text-anchor="start">XGBoost</text>
+  </g>
+
+  <!-- Right Colorbar Scale -->
+  <g transform="translate(775, 105)">
+    <rect x="0" y="0" width="18" height="278" rx="4" fill="url(#colorbarGrad)" stroke="#CBD5E1" strokeWidth="1" />
+    <!-- Ticks & Values -->
+    <line x1="18" y1="0" x2="24" y2="0" stroke="#475569" strokeWidth="1" />
+    <text x="28" y="5" font-family="monospace" font-size="11" fill="#475569">1.00</text>
+
+    <line x1="18" y1="56" x2="24" y2="56" stroke="#475569" strokeWidth="1" />
+    <text x="28" y="60" font-family="monospace" font-size="11" fill="#475569">0.98</text>
+
+    <line x1="18" y1="111" x2="24" y2="111" stroke="#475569" strokeWidth="1" />
+    <text x="28" y="115" font-family="monospace" font-size="11" fill="#475569">0.96</text>
+
+    <line x1="18" y1="167" x2="24" y2="167" stroke="#475569" strokeWidth="1" />
+    <text x="28" y="171" font-family="monospace" font-size="11" fill="#475569">0.94</text>
+
+    <line x1="18" y1="222" x2="24" y2="222" stroke="#475569" strokeWidth="1" />
+    <text x="28" y="226" font-family="monospace" font-size="11" fill="#475569">0.92</text>
+
+    <line x1="18" y1="278" x2="24" y2="278" stroke="#475569" strokeWidth="1" />
+    <text x="28" y="282" font-family="monospace" font-size="11" fill="#475569">0.90</text>
+
+    <!-- Colorbar Label -->
+    <text x="45" y="145" transform="rotate(90, 45, 145)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">
+      AUC
+    </text>
+  </g>
+</svg>
