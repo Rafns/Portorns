@@ -11,38 +11,6 @@ export const ContactSection: React.FC = () => {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleDownloadResume = (e: React.MouseEvent) => {
-    e.preventDefault();
-    // Generate and trigger download of a formatted summary CV
-    const resumeContent = `RAFAEL NANDANA S.
-AI Engineer & Data | Undergraduate Computer Science Student @ BINUS University
-Email: ${profileData.email}
-Phone: ${profileData.phone}
-Location: ${profileData.location}
-
-SUMMARY:
-Undergraduate Computer Science student at BINUS University aspiring to pursue a career in Artificial Intelligence and Data, with interests in Machine Learning, Deep Learning, Natural Language Processing, and applied research. Experienced in developing technology-driven projects and exploring data-driven and intelligent solutions to real-world problems.
-
-EDUCATION:
-- BINUS University @ Malang — Undergraduate Computer Science (AUG 2024 - FEB 2026) | GPA: ${profileData.gpa}
-
-AREAS OF FOCUS:
-- Artificial Intelligence & Machine Learning
-- Natural Language Processing (NLP)
-- Deep Learning & Neural Architectures
-- Applied Computational Research
-`;
-    const blob = new Blob([resumeContent], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Rafael_Nandana_Resume.txt';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
-
   return (
     <section
       id="contact"
@@ -70,13 +38,15 @@ AREAS OF FOCUS:
 
             {/* Resume Download Action Button */}
             <div>
-              <button
-                onClick={handleDownloadResume}
+              <a
+                href="https://drive.google.com/file/d/1DoH40GstAaanhfjMFm1EpzKf4gSxK7zB/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#F2EAD3] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider uppercase hover:bg-white transition-all duration-300 shadow-xl hover:shadow-2xl group cursor-pointer"
               >
                 <span>DOWNLOAD RESUME</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </button>
+              </a>
             </div>
           </div>
 

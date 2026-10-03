@@ -53,4 +53,30 @@ export const certificatesData: CertificateItem[] = [
       'Official Certificate of Completion (Cert ID: JMZVLDRMQXN9) for successfully completing the SQL Fundamental course by Dicoding Indonesia.',
     isHighlighted: false,
   },
+  {
+    id: 'uniathena-excel-data-analytics',
+    title: 'Basics of Data Analytics & Macros in Excel',
+    category: 'DATA ANALYTICS',
+    issuer: 'UNIATHENA',
+    date: 'OCT 2026',
+    credentialId: '5303-7123-0650',
+    verificationUrl: 'https://docs.uniathena.com/prod/user_262296780/certificate/262296780_812_1790953691_certificate.pdf',
+    skills: ['Data Analytics', 'Excel Macros', 'Data Automation', 'Spreadsheet Modeling', 'Data Analysis'],
+    description:
+      'Official Certificate of Completion (Blockchain ID: 5303-7123-0650) awarded for completing Basics of Data Analytics & Macros in Excel, developed and delivered by UniAthena in partnership with Cambridge International Qualifications, UK.',
+    isHighlighted: false,
+  },
+  {
+    id: 'hackerrank-sql-advanced',
+    title: 'SQL (Advanced)',
+    category: 'DATABASE',
+    issuer: 'HACKERRANK',
+    date: 'OCT 2026',
+    credentialId: '184A5EF6809F',
+    verificationUrl: 'https://www.hackerrank.com/certificates/iframe/184a5ef6809f',
+    skills: ['SQL (Advanced)', 'Query Optimization', 'Data Modeling', 'Indexing', 'Window Functions', 'Pivots'],
+    description:
+      'Official HackerRank Skill Certificate (Cert ID: 184A5EF6809F) awarded for passing the SQL (Advanced) skill certification test, covering query optimization, data modeling, indexing, window functions, and pivots.',
+    isHighlighted: false,
+  },
 ];

@@ -20,7 +20,7 @@ export const journeyExperiences: JourneyExperience[] = [
     number: '02',
     title: 'BNCC Learning & Training',
     role: 'Bina Nusantara Computer Club',
-    year: '2024',
+    year: '2024 - 2025',
     shortDescription:
       'Engaging in technical skill acceleration, hands-on programming workshops, and collaborative computing projects under BNCC Learning & Training.',
     tags: ['BNCC', 'LEARNING & TRAINING', 'DEVELOPMENT'],
