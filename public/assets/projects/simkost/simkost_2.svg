@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <radialGradient id="erd-bg" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#111622"/>
+      <stop offset="100%" stop-color="#080A0F"/>
+    </radialGradient>
+    <filter id="tableShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#erd-bg)"/>
+
+  <!-- Grid overlay -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1E2638" stroke-width="0.75" stroke-opacity="0.4"/>
+  </pattern>
+  <rect width="1200" height="675" fill="url(#grid)"/>
+
+  <!-- Header Banner -->
+  <g transform="translate(60, 40)">
+    <rect width="1080" height="50" rx="12" fill="#161D2B" stroke="#252F44" stroke-width="1"/>
+    <text x="24" y="31" font-family="-apple-system, system-ui, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">SIMKOST RELATIONAL DATABASE SCHEMA &amp; STORED PROCEDURES</text>
+    <rect x="880" y="12" width="176" height="26" rx="6" fill="#10B981" fill-opacity="0.15" stroke="#10B981" stroke-width="1"/>
+    <text x="968" y="29" font-family="monospace" font-size="11" font-weight="700" fill="#34D399" text-anchor="middle">3NF &amp; ACID COMPLIANT</text>
+  </g>
+
+  <!-- Relational Tables -->
+  <g transform="translate(60, 115)">
+    <!-- TABLE 1: ms_tenants -->
+    <g transform="translate(0, 0)" filter="url(#tableShadow)">
+      <rect width="240" height="230" rx="10" fill="#131926" stroke="#3B82F6" stroke-width="1.5"/>
+      <rect width="240" height="36" rx="10" fill="#1E293B"/>
+      <rect y="26" width="240" height="10" fill="#1E293B"/>
+      <text x="14" y="23" font-family="monospace" font-size="12" font-weight="700" fill="#60A5FA">TABLE: ms_tenants</text>
+      
+      <!-- Columns -->
+      <g transform="translate(14, 52)">
+        <text x="0" y="15" font-family="monospace" font-size="11" fill="#F59E0B">🔑 tenant_id (PK)</text>
+        <text x="0" y="36" font-family="monospace" font-size="11" fill="#CBD5E1">tenant_name VARCHAR(100)</text>
+        <text x="0" y="57" font-family="monospace" font-size="11" fill="#CBD5E1">phone_number VARCHAR(20)</text>
+        <text x="0" y="78" font-family="monospace" font-size="11" fill="#CBD5E1">id_card_num VARCHAR(30)</text>
+        <text x="0" y="99" font-family="monospace" font-size="11" fill="#CBD5E1">emergency_contact VARCHAR</text>
+        <text x="0" y="120" font-family="monospace" font-size="11" fill="#94A3B8">created_at TIMESTAMP</text>
+        <text x="0" y="141" font-family="monospace" font-size="11" fill="#94A3B8">status_active BOOLEAN</text>
+      </g>
+    </g>
+
+    <!-- TABLE 2: ms_rooms -->
+    <g transform="translate(420, 0)" filter="url(#tableShadow)">
+      <rect width="240" height="230" rx="10" fill="#131926" stroke="#10B981" stroke-width="1.5"/>
+      <rect width="240" height="36" rx="10" fill="#1E293B"/>
+      <rect y="26" width="240" height="10" fill="#1E293B"/>
+      <text x="14" y="23" font-family="monospace" font-size="12" font-weight="700" fill="#34D399">TABLE: ms_rooms</text>
+      
+      <!-- Columns -->
+      <g transform="translate(14, 52)">
+        <text x="0" y="15" font-family="monospace" font-size="11" fill="#F59E0B">🔑 room_id (PK)</text>
+        <text x="0" y="36" font-family="monospace" font-size="11" fill="#CBD5E1">room_number VARCHAR(10)</text>
+        <text x="0" y="57" font-family="monospace" font-size="11" fill="#CBD5E1">room_type VARCHAR(30)</text>
+        <text x="0" y="78" font-family="monospace" font-size="11" fill="#CBD5E1">monthly_rate DECIMAL(10,2)</text>
+        <text x="0" y="99" font-family="monospace" font-size="11" fill="#10B981">availability_status ENUM</text>
+        <text x="0" y="120" font-family="monospace" font-size="11" fill="#CBD5E1">floor_number INT</text>
+        <text x="0" y="141" font-family="monospace" font-size="11" fill="#94A3B8">facilities_json TEXT</text>
+      </g>
+    </g>
+
+    <!-- TABLE 3: tr_bookings -->
+    <g transform="translate(840, 0)" filter="url(#tableShadow)">
+      <rect width="240" height="230" rx="10" fill="#131926" stroke="#8B5CF6" stroke-width="1.5"/>
+      <rect width="240" height="36" rx="10" fill="#1E293B"/>
+      <rect y="26" width="240" height="10" fill="#1E293B"/>
+      <text x="14" y="23" font-family="monospace" font-size="12" font-weight="700" fill="#A78BFA">TABLE: tr_bookings</text>
+      
+      <!-- Columns -->
+      <g transform="translate(14, 52)">
+        <text x="0" y="15" font-family="monospace" font-size="11" fill="#F59E0B">🔑 booking_id (PK)</text>
+        <text x="0" y="36" font-family="monospace" font-size="11" fill="#60A5FA">🔗 tenant_id (FK)</text>
+        <text x="0" y="57" font-family="monospace" font-size="11" fill="#34D399">🔗 room_id (FK)</text>
+        <text x="0" y="78" font-family="monospace" font-size="11" fill="#CBD5E1">start_date DATE</text>
+        <text x="0" y="99" font-family="monospace" font-size="11" fill="#CBD5E1">end_date DATE</text>
+        <text x="0" y="120" font-family="monospace" font-size="11" fill="#CBD5E1">deposit_amount DECIMAL</text>
+        <text x="0" y="141" font-family="monospace" font-size="11" fill="#CBD5E1">booking_status VARCHAR</text>
+      </g>
+    </g>
+
+    <!-- TABLE 4: tr_invoices & Stored Procedure Engine -->
+    <g transform="translate(180, 270)" filter="url(#tableShadow)">
+      <rect width="320" height="200" rx="10" fill="#131926" stroke="#EC4899" stroke-width="1.5"/>
+      <rect width="320" height="36" rx="10" fill="#1E293B"/>
+      <rect y="26" width="320" height="10" fill="#1E293B"/>
+      <text x="14" y="23" font-family="monospace" font-size="12" font-weight="700" fill="#F472B6">TABLE: tr_monthly_invoices</text>
+      
+      <!-- Columns -->
+      <g transform="translate(14, 52)">
+        <text x="0" y="15" font-family="monospace" font-size="11" fill="#F59E0B">🔑 invoice_id (PK)</text>
+        <text x="0" y="36" font-family="monospace" font-size="11" fill="#A78BFA">🔗 booking_id (FK)</text>
+        <text x="0" y="57" font-family="monospace" font-size="11" fill="#CBD5E1">billing_month DATE</text>
+        <text x="0" y="78" font-family="monospace" font-size="11" fill="#CBD5E1">total_amount DECIMAL(10,2)</text>
+        <text x="0" y="99" font-family="monospace" font-size="11" fill="#CBD5E1">due_date DATE</text>
+        <text x="0" y="120" font-family="monospace" font-size="11" fill="#F59E0B">payment_status ENUM</text>
+      </g>
+    </g>
+
+    <!-- STORED PROCEDURE & TRIGGER BOX -->
+    <g transform="translate(580, 270)" filter="url(#tableShadow)">
+      <rect width="500" height="200" rx="10" fill="#0E1726" stroke="#F59E0B" stroke-width="1.5"/>
+      <rect width="500" height="36" rx="10" fill="#1C2538"/>
+      <rect y="26" width="500" height="10" fill="#1C2538"/>
+      <text x="14" y="23" font-family="monospace" font-size="12" font-weight="700" fill="#FBBF24">⚡ STORED PROCEDURES &amp; TRIGGERS LOGIC</text>
+
+      <g transform="translate(18, 52)">
+        <!-- SP 1 -->
+        <rect width="464" height="40" rx="6" fill="#182338" stroke="#334155" stroke-width="1"/>
+        <text x="12" y="18" font-family="monospace" font-size="11" font-weight="700" fill="#FBBF24">PROCEDURE: sp_GenerateMonthlyInvoices()</text>
+        <text x="12" y="32" font-family="monospace" font-size="10" fill="#94A3B8">Otomatis generate tagihan bulanan untuk seluruh booking aktif</text>
+
+        <!-- Trigger 1 -->
+        <g transform="translate(0, 48)">
+          <rect width="464" height="40" rx="6" fill="#182338" stroke="#334155" stroke-width="1"/>
+          <text x="12" y="18" font-family="monospace" font-size="11" font-weight="700" fill="#34D399">TRIGGER: trg_UpdateRoomOnCheckin</text>
+          <text x="12" y="32" font-family="monospace" font-size="10" fill="#94A3B8">Otomatis ubah status kamar menjadi 'TERISI' saat check-in</text>
+        </g>
+
+        <!-- Trigger 2 -->
+        <g transform="translate(0, 96)">
+          <rect width="464" height="40" rx="6" fill="#182338" stroke="#334155" stroke-width="1"/>
+          <text x="12" y="18" font-family="monospace" font-size="11" font-weight="700" fill="#60A5FA">TRIGGER: trg_UpdateRoomOnCheckout</text>
+          <text x="12" y="32" font-family="monospace" font-size="10" fill="#94A3B8">Otomatis ubah status kamar menjadi 'KOSONG' saat check-out</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Connecting Relationship Arrows -->
+    <path d="M 240 60 L 420 60" stroke="#60A5FA" stroke-width="2" stroke-dasharray="4 4" fill="none"/>
+    <path d="M 660 60 L 840 60" stroke="#34D399" stroke-width="2" stroke-dasharray="4 4" fill="none"/>
+    <path d="M 960 230 L 960 250 L 340 250 L 340 270" stroke="#A78BFA" stroke-width="2" fill="none"/>
+  </g>
+</svg>

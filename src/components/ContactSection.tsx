@@ -15,7 +15,7 @@ export const ContactSection: React.FC = () => {
     e.preventDefault();
     // Generate and trigger download of a formatted summary CV
     const resumeContent = `RAFAEL NANDANA S.
-AI Researcher | Undergraduate Computer Science Student @ BINUS University
+AI Engineer & Data | Undergraduate Computer Science Student @ BINUS University
 Email: ${profileData.email}
 Phone: ${profileData.phone}
 Location: ${profileData.location}

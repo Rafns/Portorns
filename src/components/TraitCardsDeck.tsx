@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 
 export interface TraitItem {
   id: string;
@@ -77,13 +78,21 @@ const TRAITS_DATA: TraitItem[] = [
 
 export const TraitCardsDeck: React.FC = () => {
   const [deck, setDeck] = useState<TraitItem[]>(TRAITS_DATA);
-  const [isThrowing, setIsThrowing] = useState<boolean>(false);
-  const [thrownCard, setThrownCard] = useState<TraitItem | null>(null);
+  const [exitVector, setExitVector] = useState<{ x: number; y: number; rotate: number }>({
+    x: 400,
+    y: -40,
+    rotate: 20,
+  });
 
-  // Play subtle physical swish tone on throw
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isTransitioningRef = useRef<boolean>(false);
+
+  // Play subtle physical sound on throw
   const playSwipeTone = () => {
     try {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const AudioCtx =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
       if (!AudioCtx) return;
       const ctx = new AudioCtx();
       const osc = ctx.createOscillator();
@@ -102,54 +111,114 @@ export const TraitCardsDeck: React.FC = () => {
       osc.start();
       osc.stop(ctx.currentTime + 0.13);
     } catch {
-      // AudioContext unavailable or restricted, fallback gracefully
+      // AudioContext unavailable or restricted
     }
   };
 
-  // Throw current top card to the right
-  const throwTopCard = useCallback(() => {
-    if (isThrowing || deck.length === 0) return;
+  // Cycle the top card to the back of the stack
+  const cycleCard = useCallback(() => {
+    setDeck((prev) => {
+      if (prev.length <= 1) return prev;
+      return [...prev.slice(1), prev[0]];
+    });
+    isTransitioningRef.current = false;
+  }, []);
+
+  // Throw card based on mouse click position relative to card center
+  const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isTransitioningRef.current || deck.length === 0) return;
 
     playSwipeTone();
-    const top = deck[0];
-    setThrownCard(top);
-    setIsThrowing(true);
+    isTransitioningRef.current = true;
 
-    setTimeout(() => {
-      setDeck((prev) => {
-        if (prev.length <= 1) return prev;
-        return [...prev.slice(1), prev[0]];
+    if (cardRef.current) {
+      const rect = cardRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      const rawDx = e.clientX - centerX;
+      const rawDy = e.clientY - centerY;
+      const dist = Math.hypot(rawDx, rawDy);
+
+      // If clicked near center, default to top-right exit vector
+      const normX = dist > 8 ? rawDx / dist : 0.9;
+      const normY = dist > 8 ? rawDy / dist : -0.3;
+
+      const throwDistance = 450;
+      setExitVector({
+        x: normX * throwDistance,
+        y: normY * throwDistance,
+        rotate: normX * 26 + (normY > 0 ? 8 : -8),
       });
-      setIsThrowing(false);
-      setThrownCard(null);
-    }, 380);
-  }, [isThrowing, deck]);
+    } else {
+      setExitVector({ x: 420, y: -40, rotate: 20 });
+    }
 
-  // Stack offsets for cards in the pile (index 0 is front, index 1-3 are behind)
-  const getCardStyle = (index: number) => {
+    cycleCard();
+  };
+
+  // Handle Drag & Throw gesture in any cursor direction
+  const handleDragEnd = (
+    _event: MouseEvent | TouchEvent | PointerEvent,
+    info: { offset: { x: number; y: number }; velocity: { x: number; y: number } }
+  ) => {
+    if (isTransitioningRef.current) return;
+
+    const { offset, velocity } = info;
+    const dragDistance = Math.hypot(offset.x, offset.y);
+    const speed = Math.hypot(velocity.x, velocity.y);
+
+    if (dragDistance > 55 || speed > 350) {
+      playSwipeTone();
+      isTransitioningRef.current = true;
+
+      // Project trajectory along drag and velocity vector
+      const dirX = offset.x !== 0 ? offset.x : velocity.x || 1;
+      const dirY = offset.y !== 0 ? offset.y : velocity.y || 0;
+      const length = Math.hypot(dirX, dirY) || 1;
+
+      const throwDistance = 500;
+      const normX = dirX / length;
+      const normY = dirY / length;
+
+      setExitVector({
+        x: normX * throwDistance,
+        y: normY * throwDistance,
+        rotate: normX * 30,
+      });
+
+      cycleCard();
+    }
+  };
+
+  // Stack offsets for cards behind the top card
+  const getBackgroundCardStyle = (index: number) => {
     switch (index) {
-      case 0:
-        return {
-          transform: 'translateY(0px) scale(1) rotate(0deg)',
-          zIndex: 30,
-          opacity: 1,
-        };
       case 1:
         return {
-          transform: 'translateY(10px) translateX(6px) scale(0.97) rotate(2.5deg)',
+          y: 10,
+          x: 6,
+          scale: 0.97,
+          rotate: 2.5,
           zIndex: 20,
           opacity: 0.9,
         };
       case 2:
         return {
-          transform: 'translateY(20px) translateX(-6px) scale(0.94) rotate(-3deg)',
+          y: 20,
+          x: -6,
+          scale: 0.94,
+          rotate: -3,
           zIndex: 10,
           opacity: 0.75,
         };
       case 3:
       default:
         return {
-          transform: 'translateY(30px) translateX(3px) scale(0.91) rotate(1.5deg)',
+          y: 30,
+          x: 3,
+          scale: 0.91,
+          rotate: 1.5,
           zIndex: 5,
           opacity: 0.5,
         };
@@ -182,95 +251,116 @@ export const TraitCardsDeck: React.FC = () => {
                 — John Johnson
               </span>
               <span className="text-[10px] font-mono text-[#F2EAD3]/40 tracking-wider">
-                Tap card to explore →
+                Drag / tap card to fling →
               </span>
             </div>
           </div>
         </div>
 
-        {/* Right Side: The Interactive Card Deck */}
+        {/* Right Side: The Interactive Dynamic Directional Card Deck */}
         <div className="relative w-full max-w-[300px] sm:max-w-[330px] h-[200px] sm:h-[215px] flex items-center justify-center">
           {/* Subtle Ambient Floor Glow */}
           <div className="absolute -inset-4 bg-gradient-to-t from-sky-500/[0.04] via-transparent to-transparent rounded-full blur-2xl pointer-events-none" />
 
-          {/* Stacked Cards Pile (Displaying up to 4 layers) */}
+          {/* Stacked Cards Pile */}
           <div className="relative w-full h-[160px] sm:h-[175px]">
-            {deck.slice(0, 4).map((card, index) => {
-              const isTop = index === 0;
-              const isCardThrowing = isTop && isThrowing;
-              const style = getCardStyle(index);
-
+            {/* Background Static Layer Cards (Index 1 to 3) */}
+            {deck.slice(1, 4).map((card, idx) => {
+              const bgStyle = getBackgroundCardStyle(idx + 1);
               return (
-                <div
+                <motion.div
                   key={card.id}
-                  onClick={isTop ? throwTopCard : undefined}
-                  role="button"
-                  tabIndex={isTop ? 0 : -1}
-                  onKeyDown={(e) => {
-                    if (isTop && (e.key === 'Enter' || e.key === ' ')) {
-                      e.preventDefault();
-                      throwTopCard();
-                    }
+                  layout
+                  animate={{
+                    y: bgStyle.y,
+                    x: bgStyle.x,
+                    scale: bgStyle.scale,
+                    rotate: bgStyle.rotate,
+                    opacity: bgStyle.opacity,
                   }}
-                  className={`absolute inset-0 rounded-2xl p-5 sm:p-6 select-none transition-all ${
-                    isCardThrowing
-                      ? 'transition-all duration-350 ease-in translate-x-[150%] rotate-[22deg] opacity-0 pointer-events-none'
-                      : isTop
-                      ? 'cursor-pointer hover:shadow-[0_15px_40px_rgba(0,0,0,0.85)] hover:-translate-y-1.5 duration-300 ease-out'
-                      : 'pointer-events-none duration-300 ease-out'
-                  } bg-[#0E121A] border border-white/[0.14] shadow-[0_10px_35px_rgba(0,0,0,0.7)] flex flex-col justify-between`}
-                  style={{
-                    transform: isCardThrowing
-                      ? 'translateX(160%) rotate(20deg) scale(0.95)'
-                      : style.transform,
-                    zIndex: style.zIndex,
-                    opacity: isCardThrowing ? 0 : style.opacity,
-                  }}
+                  transition={{ type: 'spring', stiffness: 320, damping: 24 }}
+                  className="absolute inset-0 rounded-2xl p-5 sm:p-6 select-none bg-[#0E121A] border border-white/[0.14] shadow-[0_10px_35px_rgba(0,0,0,0.7)] flex flex-col justify-between pointer-events-none"
+                  style={{ zIndex: bgStyle.zIndex }}
                 >
-                  {/* Subtle Card Inner Highlight Mesh */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/[0.06] via-transparent to-transparent pointer-events-none" />
-
-                  {/* Card Header: Category & Counter */}
                   <div className="flex items-center justify-between relative z-10">
                     <span className="font-mono text-[11px] sm:text-xs font-bold tracking-[0.24em] uppercase text-[#F2EAD3]/75">
                       {card.category}
                     </span>
-
                     <span className="font-mono text-[10px] font-semibold tracking-wider text-neutral-400 bg-white/[0.04] px-2 py-0.5 rounded border border-white/[0.08]">
                       {card.number}
                     </span>
                   </div>
-
-                  {/* Card Body: Main Title */}
                   <div className="relative z-10 mt-auto">
                     <h4 className="font-display text-2xl sm:text-[26px] font-bold tracking-tight text-white leading-tight">
                       {card.title}
                     </h4>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
 
-            {/* Ghost Thrown Card (Preserves smooth physics while exiting) */}
-            {isThrowing && thrownCard && (
-              <div
-                className="absolute inset-0 rounded-2xl p-5 sm:p-6 bg-[#0E121A] border border-white/[0.14] shadow-[0_15px_45px_rgba(0,0,0,0.9)] flex flex-col justify-between transition-all duration-380 ease-in pointer-events-none translate-x-[165%] rotate-[22deg] opacity-0 z-40"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[11px] sm:text-xs font-bold tracking-[0.24em] uppercase text-[#F2EAD3]/75">
-                    {thrownCard.category}
-                  </span>
-                  <span className="font-mono text-[10px] font-semibold text-neutral-400">
-                    {thrownCard.number}
-                  </span>
-                </div>
-                <div className="mt-auto">
-                  <h4 className="font-display text-2xl sm:text-[26px] font-bold text-white leading-tight">
-                    {thrownCard.title}
-                  </h4>
-                </div>
-              </div>
-            )}
+            {/* Front Interactive Card (Index 0) with Cursor Direction Following */}
+            <AnimatePresence mode="popLayout">
+              {deck[0] && (
+                <motion.div
+                  ref={cardRef}
+                  key={deck[0].id}
+                  layout
+                  drag
+                  dragSnapToOrigin
+                  dragElastic={0.65}
+                  onDragEnd={handleDragEnd}
+                  onClick={handleCardClick}
+                  initial={{ scale: 0.96, y: 12, opacity: 0.9 }}
+                  animate={{
+                    scale: 1,
+                    y: 0,
+                    x: 0,
+                    rotate: 0,
+                    opacity: 1,
+                  }}
+                  exit={{
+                    x: exitVector.x,
+                    y: exitVector.y,
+                    rotate: exitVector.rotate,
+                    opacity: 0,
+                    scale: 0.9,
+                    transition: { duration: 0.35, ease: [0.32, 0, 0.67, 0] },
+                  }}
+                  whileDrag={{
+                    scale: 1.04,
+                    cursor: 'grabbing',
+                    boxShadow: '0 25px 50px rgba(0,0,0,0.95)',
+                  }}
+                  whileHover={{
+                    y: -4,
+                    boxShadow: '0 16px 40px rgba(0,0,0,0.85)',
+                  }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 26 }}
+                  className="absolute inset-0 rounded-2xl p-5 sm:p-6 select-none cursor-grab active:cursor-grabbing bg-[#0E121A] border border-white/[0.16] shadow-[0_12px_35px_rgba(0,0,0,0.75)] flex flex-col justify-between z-30"
+                >
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/[0.08] via-transparent to-transparent pointer-events-none" />
+
+                  {/* Card Header: Category & Number */}
+                  <div className="flex items-center justify-between relative z-10">
+                    <span className="font-mono text-[11px] sm:text-xs font-bold tracking-[0.24em] uppercase text-[#F2EAD3]/75">
+                      {deck[0].category}
+                    </span>
+                    <span className="font-mono text-[10px] font-semibold tracking-wider text-neutral-400 bg-white/[0.04] px-2 py-0.5 rounded border border-white/[0.08]">
+                      {deck[0].number}
+                    </span>
+                  </div>
+
+                  {/* Card Body: Title */}
+                  <div className="relative z-10 mt-auto">
+                    <h4 className="font-display text-2xl sm:text-[26px] font-bold tracking-tight text-white leading-tight">
+                      {deck[0].title}
+                    </h4>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </div>

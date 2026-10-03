@@ -2,8 +2,8 @@ import { PortfolioProfile, Project } from '../types';
 
 export const profileData: PortfolioProfile = {
   name: 'Rafael Nandana S.',
-  role: 'AI Researcher',
-  headline: 'AI Researcher & Developer',
+  role: 'AI Engineer & Data',
+  headline: 'AI Engineer & Data',
   tagline1: 'Drone, roots, and nature-captured sound on wax LPs.',
   tagline2: 'Every disc cut just once, snag it or miss.',
   bioPrefix: 'I am Undergraduate Computer Science student at BINUS University aspiring to pursue a career in ',
@@ -13,7 +13,7 @@ export const profileData: PortfolioProfile = {
   bioDescription:
     'Experienced in developing technology-driven projects and exploring data-driven and intelligent solutions to real-world problems. Passionate about building impactful technology and continuously learning, developing new skills, and keeping up with emerging technologies in AI and data.',
   focus: 'Artificial Intelligence & Data',
-  currently: 'AI Researcher & Developer',
+  currently: 'AI Engineer & Data',
   ageBase: '20 / Jakarta, Indonesia',
   specialization: 'Intelligent Systems',
   interests: 'AI, Sports & Gaming',
@@ -367,6 +367,69 @@ export const projectsData: Project[] = [
       frequency: 370,
       type: 'pulse',
       note: 'F#4 Cyber Shield Pulse',
+    },
+  },
+  {
+    id: 'simkost-management',
+    title: 'SIMKOST',
+    subtitle: 'Relational Database Architecture & Figma UI/UX System for Automated Boarding House Management',
+    category: 'Database Systems & UI/UX Design',
+    description:
+      'A comprehensive boarding house (kost) management platform engineered to automate core operational transactions, such as monthly recurring billing and real-time room availability, ensuring data integrity through referential integrity and Stored Procedures while providing efficient reporting on room occupancy and overdue invoices.',
+    longDescription:
+      'The SIMKOST application is designed to automate core boarding house management transactions, such as recurring monthly invoice generation and real-time room availability updates, ensuring data integrity through the implementation of referential integrity and Stored Procedures, as well as delivering efficient analytical reports on room statuses and overdue bills.',
+    role: 'Database Designer & UI/UX Designer',
+    client: 'Database Technology Final Project (FINPRO LAB DATABASE)',
+    date: 'January 2026',
+    year: '2026',
+    highlight: true,
+    imageUrl: '/assets/projects/simkost/simkost_1.png',
+    images: [
+      '/assets/projects/simkost/simkost_1.png',
+      '/assets/projects/simkost/simkost_2.png',
+      '/assets/projects/simkost/simkost_3.png',
+      '/assets/projects/simkost/simkost_4.png',
+      '/assets/projects/simkost/simkost_5.png',
+    ],
+    links: [
+      {
+        label: 'Figma Prototype',
+        url: 'https://www.figma.com/design/gkB6gDssRcHJO7qVmjgXiZ/FINPRO-LAB-DATABASE-SIMKOST?node-id=0-1&t=hpylvPiwI3SidhL5-1',
+        icon: 'presentation',
+      },
+    ],
+    tags: [
+      'Figma',
+      'UI/UX Design',
+      'Database Design',
+      'MySQL',
+      'Stored Procedures',
+      'Referential Integrity',
+      'ERD & 3NF Normalization',
+      'Boarding House System',
+    ],
+    aboutParagraphs: [
+      'Managing boarding houses (kost) manually often leads to human errors in monthly billing calculations, delayed overdue payment notices, room occupancy misallocations, and data redundancy across tenant records.',
+      'The SIMKOST platform was developed to resolve these challenges by automating core operational transactions, including automated monthly billing generation and real-time room availability status toggling during check-in and check-out workflows.',
+      'The project focuses on architecting a robust relational database schema (Entity-Relationship Modeling, 3NF normalization, referential integrity constraints, and automated SQL Stored Procedures & Triggers), seamlessly paired with a high-fidelity, interactive Figma UI/UX prototype.',
+    ],
+    roleContributions: [
+      'Relational Database Schema Architecture: Designed the Entity-Relationship Diagram (ERD), normalized schemas up to Third Normal Form (3NF), and enforced strict Foreign Key Referential Integrity across master and transaction tables to eliminate data anomalies.',
+      'Stored Procedures & Trigger Automation: Engineered modular SQL Stored Procedures (e.g., sp_GenerateMonthlyInvoices) for recurring invoice generation and active database Triggers for real-time room status synchronization upon tenant check-in and check-out.',
+      'Interactive Figma UI/UX Design: Crafted a clean, modern, and accessible interface prototype on Figma featuring a live room availability grid, tenant onboarding workflows, billing tracking, and overdue alert mechanisms.',
+    ],
+    whatILearned: [
+      'Through the development of SIMKOST, I mastered the process of translating complex business requirements into an ACID-compliant relational database schema with Stored Procedures, Triggers, and strict referential integrity. I also refined my UI/UX design workflow in Figma, ensuring the user interface seamlessly mirrors real-time backend data states.',
+    ],
+    metrics: [
+      { label: 'Database Architecture', value: '3NF & Stored Procedures' },
+      { label: 'UI/UX System', value: 'Interactive Figma Prototype' },
+      { label: 'Core Automation', value: 'Real-Time Billing & Rooms' },
+    ],
+    soundSample: {
+      frequency: 330,
+      type: 'ambient',
+      note: 'E4 Database Sync Tone',
     },
   },
 ];

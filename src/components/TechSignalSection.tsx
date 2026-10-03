@@ -17,51 +17,78 @@ const TECH_CATEGORIES = [
   { id: 'Backend, DevOps & Tools', label: 'Tools & Backend' },
 ];
 
-// Initial fractional distribution of nodes along the paths (0 to 1) with generous spacing
+// Initial fractional distribution of nodes along the paths (0 to 1) with balanced spacing
 const INITIAL_OFFSETS: Record<string, number> = {
-  // Tier 1 (Line 1): 3 items spaced generously (~0.33 apart)
-  python: 0.28,
-  typescript: 0.62,
-  javascript: 0.95,
+  // Tier 1 (Line 1): 3 items
+  python: 0.18,
+  typescript: 0.52,
+  javascript: 0.86,
 
-  // Tier 2 (Line 2): 4 items spaced generously (0.25 apart)
-  react: 0.20,
-  nextjs: 0.45,
-  tailwind: 0.70,
-  flutter: 0.95,
+  // Tier 2 (Line 2): 4 items
+  react: 0.12,
+  nextjs: 0.38,
+  tailwind: 0.64,
+  fastapi: 0.90,
 
-  // Tier 3 (Line 3): 4 items spaced generously (0.25 apart)
-  pytorch: 0.20,
-  opencv: 0.45,
-  nlp: 0.70,
-  llms: 0.95,
+  // Tier 3 (Line 3): 8 items
+  pytorch: 0.06,
+  tensorflow: 0.19,
+  scikitlearn: 0.32,
+  xgboost: 0.45,
+  numpy: 0.58,
+  pandas: 0.71,
+  huggingface: 0.84,
+  opencv: 0.97,
 
-  // Tier 4 (Line 4): 5 items spaced generously (0.20 apart)
-  fastapi: 0.16,
-  docker: 0.36,
-  postgresql: 0.56,
-  supabase: 0.76,
-  linux: 0.96,
+  // Tier 4 (Line 4): 11 items
+  docker: 0.05,
+  postgresql: 0.14,
+  mysql: 0.23,
+  supabase: 0.32,
+  git: 0.41,
+  github: 0.50,
+  figma: 0.59,
+  antigravity: 0.68,
+  claude: 0.77,
+  chatgpt: 0.86,
+  gemini: 0.95,
 };
 
-// Fallback static positions with expanded vertical lanes (170px gap between tiers)
+// Fallback static positions across 4 tiers
 const FALLBACK_COORDINATES: Record<string, { x: number; y: number }> = {
-  python: { x: 340, y: 140 },
-  typescript: { x: 650, y: 175 },
-  javascript: { x: 960, y: 140 },
-  react: { x: 220, y: 350 },
-  nextjs: { x: 480, y: 315 },
-  tailwind: { x: 730, y: 350 },
-  flutter: { x: 990, y: 315 },
-  pytorch: { x: 220, y: 485 },
-  opencv: { x: 460, y: 520 },
-  nlp: { x: 680, y: 485 },
-  llms: { x: 920, y: 520 },
-  fastapi: { x: 200, y: 690 },
-  docker: { x: 420, y: 655 },
-  postgresql: { x: 640, y: 690 },
-  supabase: { x: 850, y: 655 },
-  linux: { x: 1040, y: 675 },
+  // Tier 1
+  python: { x: 300, y: 140 },
+  typescript: { x: 600, y: 175 },
+  javascript: { x: 900, y: 140 },
+
+  // Tier 2
+  react: { x: 180, y: 350 },
+  nextjs: { x: 460, y: 315 },
+  tailwind: { x: 740, y: 350 },
+  fastapi: { x: 1020, y: 315 },
+
+  // Tier 3
+  pytorch: { x: 120, y: 485 },
+  tensorflow: { x: 260, y: 520 },
+  scikitlearn: { x: 400, y: 485 },
+  xgboost: { x: 540, y: 520 },
+  numpy: { x: 680, y: 485 },
+  pandas: { x: 820, y: 520 },
+  huggingface: { x: 960, y: 485 },
+  opencv: { x: 1090, y: 520 },
+
+  // Tier 4
+  docker: { x: 110, y: 690 },
+  postgresql: { x: 210, y: 655 },
+  mysql: { x: 310, y: 690 },
+  supabase: { x: 410, y: 655 },
+  git: { x: 510, y: 690 },
+  github: { x: 610, y: 655 },
+  figma: { x: 710, y: 690 },
+  antigravity: { x: 810, y: 655 },
+  claude: { x: 910, y: 690 },
+  chatgpt: { x: 1000, y: 655 },
+  gemini: { x: 1090, y: 690 },
 };
 
 // Generously spaced undulating sinusoidal wave paths (Baselines: 160, 330, 500, 670)
@@ -335,16 +362,16 @@ export const TechSignalSection: React.FC<TechSignalSectionProps> = ({
 
               {/* Lane Category Indicator Labels on the Left of Waves */}
               <text x="35" y="105" fill="#FFFFFF" fillOpacity="0.38" fontSize="10" fontFamily="monospace" fontWeight="600" letterSpacing="0.2em">
-                01 / CORE LANGUAGES
+                CORE LANGUAGES
               </text>
               <text x="35" y="275" fill="#FFFFFF" fillOpacity="0.38" fontSize="10" fontFamily="monospace" fontWeight="600" letterSpacing="0.2em">
-                02 / FRONTEND & FRAMEWORKS
+                FRONTEND & FRAMEWORKS
               </text>
               <text x="35" y="445" fill="#FFFFFF" fillOpacity="0.38" fontSize="10" fontFamily="monospace" fontWeight="600" letterSpacing="0.2em">
-                03 / AI & MACHINE LEARNING
+                AI & MACHINE LEARNING
               </text>
               <text x="35" y="615" fill="#FFFFFF" fillOpacity="0.38" fontSize="10" fontFamily="monospace" fontWeight="600" letterSpacing="0.2em">
-                04 / BACKEND, DEVOPS & TOOLS
+                BACKEND, DEVOPS & TOOLS
               </text>
 
               {/* Ambient Micro-dots */}
@@ -371,7 +398,7 @@ export const TechSignalSection: React.FC<TechSignalSectionProps> = ({
                 fill="none"
               />
 
-              {/* ================= LINE 2 (TIER 2) WAVE (React, Next.js, Tailwind, Flutter) -> Moves Right to Left ================= */}
+              {/* ================= LINE 2 (TIER 2) WAVE (React, Next.js, Tailwind, FastAPI) -> Moves Right to Left ================= */}
               <path
                 d={WAVE_PATHS[1]}
                 stroke="url(#ambientWaveGrad)"
@@ -387,7 +414,7 @@ export const TechSignalSection: React.FC<TechSignalSectionProps> = ({
                 fill="none"
               />
 
-              {/* ================= LINE 3 (TIER 3) WAVE (PyTorch, OpenCV, NLP, LLMs) -> Moves Left to Right ================= */}
+              {/* ================= LINE 3 (TIER 3) WAVE (PyTorch, TensorFlow, Scikit-Learn, XGBoost, NumPy, Pandas, Hugging Face, OpenCV) -> Moves Left to Right ================= */}
               <path
                 d={WAVE_PATHS[2]}
                 stroke="url(#ambientWaveGrad)"
@@ -403,7 +430,7 @@ export const TechSignalSection: React.FC<TechSignalSectionProps> = ({
                 fill="none"
               />
 
-              {/* ================= LINE 4 (TIER 4) WAVE (FastAPI, Docker, Postgres, Supabase, Linux) -> Moves Right to Left ================= */}
+              {/* ================= LINE 4 (TIER 4) WAVE (Docker, Postgres, MySQL, Supabase, Git, GitHub, Figma, Antigravity, Claude, ChatGPT, Gemini) -> Moves Right to Left ================= */}
               <path
                 d={WAVE_PATHS[3]}
                 stroke="url(#ambientWaveGrad)"
@@ -484,7 +511,7 @@ export const TechSignalSection: React.FC<TechSignalSectionProps> = ({
                     />
                   </div>
 
-                  {/* Label: Technology Name + Number */}
+                  {/* Label: Technology Name */}
                   <div className="text-center mt-2 pointer-events-none">
                     <div
                       className={`text-xs font-semibold tracking-tight transition-colors duration-200 ${
@@ -494,15 +521,6 @@ export const TechSignalSection: React.FC<TechSignalSectionProps> = ({
                       }`}
                     >
                       {item.name}
-                    </div>
-                    <div
-                      className={`text-[10px] font-mono transition-colors duration-200 ${
-                        isActive
-                          ? 'text-neutral-400 font-medium'
-                          : 'text-neutral-600'
-                      }`}
-                    >
-                      {item.number}
                     </div>
                   </div>
                 </div>

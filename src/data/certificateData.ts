@@ -29,7 +29,7 @@ export const certificatesData: CertificateItem[] = [
   },
   {
     id: 'dicoding-data-science',
-    title: 'Belajar Dasar Data Science',
+    title: 'Data Science Fundamental',
     category: 'DATA SCIENCE',
     issuer: 'DICODING INDONESIA',
     date: 'OCT 2026',
@@ -37,12 +37,12 @@ export const certificatesData: CertificateItem[] = [
     verificationUrl: 'https://www.dicoding.com/certificates/QLZ9N4MR9Z5D',
     skills: ['Data Science', 'Data Analysis', 'Machine Learning', 'SQL & Databases', 'Python'],
     description:
-      'Official Certificate of Completion (Cert ID: QLZ9N4MR9Z5D) for successfully completing the Belajar Dasar Data Science course by Dicoding Indonesia.',
+      'Official Certificate of Completion (Cert ID: QLZ9N4MR9Z5D) for successfully completing the Data Science Fundamental course by Dicoding Indonesia.',
     isHighlighted: false,
   },
   {
     id: 'dicoding-sql',
-    title: 'Belajar Dasar SQL',
+    title: 'SQL Fundamental',
     category: 'DATABASE',
     issuer: 'DICODING INDONESIA',
     date: 'OCT 2026',
@@ -50,7 +50,7 @@ export const certificatesData: CertificateItem[] = [
     verificationUrl: 'https://www.dicoding.com/certificates/JMZVLDRMQXN9',
     skills: ['Structured Query Language (SQL)', 'Relational Databases', 'DDL & DML', 'Query Optimization', 'DBMS'],
     description:
-      'Official Certificate of Completion (Cert ID: JMZVLDRMQXN9) for successfully completing the Belajar Dasar Structured Query Language (SQL) course by Dicoding Indonesia.',
+      'Official Certificate of Completion (Cert ID: JMZVLDRMQXN9) for successfully completing the SQL Fundamental course by Dicoding Indonesia.',
     isHighlighted: false,
   },
 ];

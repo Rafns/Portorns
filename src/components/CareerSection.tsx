@@ -170,7 +170,7 @@ export const CareerSection: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-14 sm:mb-20 text-center max-w-2xl mx-auto"
         >
@@ -225,7 +225,7 @@ export const CareerSection: React.FC = () => {
                 d={pathData.ambientPath}
                 initial={{ pathLength: 0, opacity: 0 }}
                 whileInView={{ pathLength: 1, opacity: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.1 }}
                 transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
                 stroke="url(#zigZagAmbientGrad)"
                 strokeWidth="3.5"
@@ -239,7 +239,7 @@ export const CareerSection: React.FC = () => {
                 d={pathData.linePath}
                 initial={{ pathLength: 0, opacity: 0 }}
                 whileInView={{ pathLength: 1, opacity: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.1 }}
                 transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
                 stroke="url(#zigZagGrad)"
                 strokeWidth="1.5"
@@ -254,7 +254,7 @@ export const CareerSection: React.FC = () => {
                 d={pathData.linePath}
                 initial={{ pathLength: 0, opacity: 0 }}
                 whileInView={{ pathLength: 1, opacity: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.1 }}
                 transition={{ duration: 1.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 stroke="rgba(255, 255, 255, 0.08)"
                 strokeWidth="0.8"
@@ -270,7 +270,7 @@ export const CareerSection: React.FC = () => {
                   r="2.5"
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 0.4 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false, amount: 0.1 }}
                   transition={{ delay: 0.7, duration: 0.4 }}
                   fill="#FFFFFF"
                 />
@@ -282,7 +282,7 @@ export const CareerSection: React.FC = () => {
                   r="2.5"
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 0.4 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false, amount: 0.1 }}
                   transition={{ delay: 1.1, duration: 0.4 }}
                   fill="#FFFFFF"
                 />
@@ -302,7 +302,7 @@ export const CareerSection: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, x: -35, scale: 0.96 }}
                   whileInView={{ opacity: 1, x: 0, scale: 1 }}
-                  viewport={{ once: true, margin: '-60px' }}
+                  viewport={{ once: false, amount: 0.25 }}
                   transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                   className="lg:col-span-6 relative"
                 >
@@ -311,12 +311,17 @@ export const CareerSection: React.FC = () => {
                     ref={node1Ref}
                     initial={{ scale: 0, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false, amount: 0.1 }}
                     transition={{ type: 'spring', stiffness: 350, damping: 20, delay: 0.3 }}
                     className="absolute -top-3 -right-3 lg:top-1/2 lg:-right-6 -translate-y-1/2 z-20"
                   >
-                    <div className="w-10 h-10 rounded-full bg-[#080808] border border-white/20 flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.08)] group-hover:border-white/40 transition-colors">
-                      <div className="w-2.5 h-2.5 rounded-full bg-white/80" />
+                    <div className="w-10 h-10 rounded-full bg-[#080808] border border-white/20 flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.08)] group-hover:border-white/40 transition-colors relative">
+                      <motion.div
+                        animate={{ scale: [1, 1.35, 1], opacity: [0.2, 0.6, 0.2] }}
+                        transition={{ repeat: Infinity, duration: 2.8, ease: 'easeInOut' }}
+                        className="absolute inset-0 rounded-full bg-white/10"
+                      />
+                      <div className="w-2.5 h-2.5 rounded-full bg-white/90 relative z-10" />
                     </div>
                   </motion.div>
 
@@ -386,7 +391,7 @@ export const CareerSection: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, x: 25 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
+                  viewport={{ once: false, amount: 0.25 }}
                   transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   className="hidden lg:flex lg:col-span-6 flex-col justify-center pl-6"
                 >
@@ -414,7 +419,7 @@ export const CareerSection: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, x: -25 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
+                  viewport={{ once: false, amount: 0.25 }}
                   transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   className="hidden lg:flex lg:col-span-6 flex-col justify-center items-end text-right pr-6"
                 >
@@ -435,7 +440,7 @@ export const CareerSection: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, x: 35, scale: 0.96 }}
                   whileInView={{ opacity: 1, x: 0, scale: 1 }}
-                  viewport={{ once: true, margin: '-60px' }}
+                  viewport={{ once: false, amount: 0.25 }}
                   transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                   className="lg:col-span-6 relative"
                 >
@@ -444,12 +449,17 @@ export const CareerSection: React.FC = () => {
                     ref={node2Ref}
                     initial={{ scale: 0, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false, amount: 0.1 }}
                     transition={{ type: 'spring', stiffness: 350, damping: 20, delay: 0.3 }}
                     className="absolute -top-3 -left-3 lg:top-1/2 lg:-left-6 -translate-y-1/2 z-20"
                   >
-                    <div className="w-10 h-10 rounded-full bg-[#080808] border border-white/20 flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.08)] group-hover:border-white/40 transition-colors">
-                      <div className="w-2.5 h-2.5 rounded-full bg-white/80" />
+                    <div className="w-10 h-10 rounded-full bg-[#080808] border border-white/20 flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.08)] group-hover:border-white/40 transition-colors relative">
+                      <motion.div
+                        animate={{ scale: [1, 1.35, 1], opacity: [0.2, 0.6, 0.2] }}
+                        transition={{ repeat: Infinity, duration: 2.8, ease: 'easeInOut' }}
+                        className="absolute inset-0 rounded-full bg-white/10"
+                      />
+                      <div className="w-2.5 h-2.5 rounded-full bg-white/90 relative z-10" />
                     </div>
                   </motion.div>
 
@@ -526,7 +536,7 @@ export const CareerSection: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, x: -35, scale: 0.96 }}
                   whileInView={{ opacity: 1, x: 0, scale: 1 }}
-                  viewport={{ once: true, margin: '-60px' }}
+                  viewport={{ once: false, amount: 0.25 }}
                   transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                   className="lg:col-span-6 relative"
                 >
@@ -535,12 +545,17 @@ export const CareerSection: React.FC = () => {
                     ref={node3Ref}
                     initial={{ scale: 0, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false, amount: 0.1 }}
                     transition={{ type: 'spring', stiffness: 350, damping: 20, delay: 0.3 }}
                     className="absolute -top-3 -right-3 lg:top-1/2 lg:-right-6 -translate-y-1/2 z-20"
                   >
-                    <div className="w-10 h-10 rounded-full bg-[#080808] border border-white/20 flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.08)] group-hover:border-white/40 transition-colors">
-                      <div className="w-2.5 h-2.5 rounded-full bg-white/80" />
+                    <div className="w-10 h-10 rounded-full bg-[#080808] border border-white/20 flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.08)] group-hover:border-white/40 transition-colors relative">
+                      <motion.div
+                        animate={{ scale: [1, 1.35, 1], opacity: [0.2, 0.6, 0.2] }}
+                        transition={{ repeat: Infinity, duration: 2.8, ease: 'easeInOut' }}
+                        className="absolute inset-0 rounded-full bg-white/10"
+                      />
+                      <div className="w-2.5 h-2.5 rounded-full bg-white/90 relative z-10" />
                     </div>
                   </motion.div>
 
@@ -610,7 +625,7 @@ export const CareerSection: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, x: 25 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
+                  viewport={{ once: false, amount: 0.25 }}
                   transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   className="hidden lg:flex lg:col-span-6 flex-col justify-center pl-6"
                 >
@@ -632,8 +647,8 @@ export const CareerSection: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="mt-16 sm:mt-24 text-center"
         >
           <a

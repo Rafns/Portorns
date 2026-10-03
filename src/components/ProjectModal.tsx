@@ -79,7 +79,9 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
       type === 'presentation' ||
       text.includes('presentation') ||
       text.includes('canva') ||
-      text.includes('demo')
+      text.includes('demo') ||
+      text.includes('figma') ||
+      text.includes('prototype')
     ) {
       return <MonitorPlay className="w-4 h-4 text-emerald-400/90 shrink-0" />;
     }

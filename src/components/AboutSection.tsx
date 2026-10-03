@@ -1,40 +1,94 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
+import { motion } from 'motion/react';
 import { profileData } from '../data/portfolioData';
 
 const PORTRAIT_URL = '/assets/rafael_nandana_portrait.jpg';
 
 export const AboutSection: React.FC = () => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0, glareX: 50, glareY: 50 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Real-time 3D tilt and glare calculation based on cursor position
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    // Subtle, elegant degree tilt max (-10 to +10 deg)
+    const rotateX = ((y - centerY) / centerY) * -10;
+    const rotateY = ((x - centerX) / centerX) * 10;
+
+    const glareX = (x / rect.width) * 100;
+    const glareY = (y / rect.height) * 100;
+
+    setTilt({ rotateX, rotateY, glareX, glareY });
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setTilt({ rotateX: 0, rotateY: 0, glareX: 50, glareY: 50 });
+  };
+
   return (
     <section
       id="about"
-      className="relative min-h-[90vh] flex flex-col justify-center px-4 sm:px-8 lg:px-16 py-20 sm:py-28"
+      className="relative min-h-[90vh] flex flex-col justify-center px-4 sm:px-8 lg:px-16 py-20 sm:py-28 select-none"
     >
       <div className="max-w-6xl mx-auto w-full relative z-10">
-        {/* Main 2-column layout matching reference image */}
+        {/* Main 2-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: Clean Portrait Card with user uploaded photo */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div
+          {/* Left Column: 3D Interactive Holographic Portrait Card */}
+          <div className="lg:col-span-5 flex justify-center perspective-[1000px]">
+            <motion.div
+              ref={cardRef}
+              onMouseMove={handleMouseMove}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={handleMouseLeave}
+              animate={{
+                rotateX: tilt.rotateX,
+                rotateY: tilt.rotateY,
+                scale: isHovered ? 1.025 : 1,
+              }}
+              transition={{ type: 'spring', stiffness: 350, damping: 25 }}
               id="about-portrait-card"
-              className="relative w-full max-w-sm sm:max-w-md rounded-3xl overflow-hidden bg-[#111115] border border-neutral-800 shadow-2xl shadow-black/80 group"
+              className="relative w-full max-w-sm sm:max-w-md rounded-3xl p-1 bg-gradient-to-br from-white/[0.18] via-white/[0.05] to-transparent shadow-2xl shadow-black/90 cursor-pointer group"
+              style={{ transformStyle: 'preserve-3d' }}
             >
-              {/* Portrait Container - Clean & Pristine */}
-              <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#0A0A0E] flex items-center justify-center">
+              {/* Portrait Container with Holographic Glare */}
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[22px] bg-[#0A0A0E] border border-white/[0.08] flex items-center justify-center">
+                {/* Photo Image */}
                 <img
                   src={PORTRAIT_URL}
                   alt={profileData.name}
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out filter brightness-[0.98] contrast-[1.03]"
                 />
+
+                {/* Dynamic Mouse Glare (Light reflection sheen following cursor) */}
+                <div
+                  className="absolute inset-0 pointer-events-none transition-opacity duration-300"
+                  style={{
+                    opacity: isHovered ? 0.4 : 0,
+                    background: `radial-gradient(circle at ${tilt.glareX}% ${tilt.glareY}%, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.08) 40%, transparent 70%)`,
+                  }}
+                />
+
+                {/* Subtle dark vignette overlay at bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Right Column: Bio & Personal Details Glass Panel */}
           <div className="lg:col-span-7 flex flex-col">
             <div className="rounded-3xl bg-[#111115] border border-neutral-800 p-6 sm:p-10 shadow-2xl shadow-black/60">
               
-              {/* Top Section: Replaced with Gambar 2 content */}
+              {/* Top Section */}
               <div id="about-intro-statement" className="space-y-4">
                 {/* Name Heading */}
                 <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#FFFFFF] select-none">

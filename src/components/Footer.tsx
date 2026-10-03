@@ -1,83 +1,36 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SectionId } from '../types';
 import { profileData } from '../data/portfolioData';
-import { Mail, Linkedin, Github, ArrowUpRight, Check, Sparkles } from 'lucide-react';
+import { Mail, Linkedin, Github, ArrowUpRight } from 'lucide-react';
 
 interface FooterProps {
   onNavigate?: (section: SectionId) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email || !email.includes('@')) return;
-    setSubscribed(true);
-    setEmail('');
-    setTimeout(() => {
-      setSubscribed(false);
-    }, 4000);
-  };
-
   return (
     <footer className="relative z-10 w-full overflow-hidden pt-12 sm:pt-16 pb-12 px-6 sm:px-12 lg:px-16">
       <div className="max-w-7xl mx-auto">
-        {/* Columns: Newsletter & Navigation Links */}
+        {/* Columns: Profile Statement & Navigation Links */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pb-12">
-          {/* Left Column: Newsletter Subscription */}
-          <div className="lg:col-span-5 space-y-4">
-            <h3 className="font-display text-base sm:text-lg font-semibold text-[#FFFFFF] tracking-tight flex items-center gap-2">
-              <span>Newsletter</span>
-              <Sparkles className="w-3.5 h-3.5 text-[#F2EAD3]" />
+          {/* Left Column: Brand & Bio */}
+          <div className="lg:col-span-5 space-y-3">
+            <h3 className="font-display text-lg sm:text-xl font-bold text-[#FFFFFF] tracking-tight">
+              {profileData.name}
             </h3>
-            <p className="font-sans text-sm text-[#F2EAD3]/80 leading-relaxed max-w-sm">
-              We'd love to share our latest research on intelligent systems, neural audio models, and thoughtful digital experiences with you.
+            <p className="font-mono text-xs text-[#F2EAD3]/60 uppercase tracking-wider">
+              {profileData.headline}
             </p>
-
-            {/* Form Input */}
-            <form onSubmit={handleSubscribe} className="pt-2">
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 max-w-md">
-                <div className="relative flex-1">
-                  <input
-                    type="email"
-                    id="newsletter-email-input"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    required
-                    className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-neutral-500 text-sm focus:outline-none focus:border-[#F2EAD3]/70 transition-all font-mono"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  id="newsletter-subscribe-btn"
-                  className="px-5 py-2.5 rounded-xl bg-[#F2EAD3] text-[#0A0A0A] hover:bg-white active:scale-95 text-sm font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer flex items-center justify-center gap-1.5 shadow-sm font-mono"
-                >
-                  {subscribed ? (
-                    <>
-                      <Check className="w-4 h-4 text-emerald-600" />
-                      <span className="text-emerald-700">Subscribed</span>
-                    </>
-                  ) : (
-                    'Subscribe'
-                  )}
-                </button>
-              </div>
-              {subscribed && (
-                <p className="text-xs text-emerald-400 mt-2 font-mono">
-                  Thank you! Welcome to the orbit.
-                </p>
-              )}
-            </form>
+            <p className="font-sans text-sm text-[#F2EAD3]/80 leading-relaxed max-w-sm pt-1">
+              We'd love to share our latest research on intelligent systems, data, and thoughtful digital experiences with you.
+            </p>
           </div>
 
           {/* Right Columns: Three Link Columns & Socials */}
           <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-10">
             {/* Column 1: Navigation */}
             <div className="space-y-3.5">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-neutral-300">
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-neutral-300 font-mono">
                 Navigation
               </h4>
               <ul className="space-y-2.5 text-sm text-neutral-400">
@@ -120,7 +73,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </ul>
             </div>
 
-            {/* Column 2: Research & Focus */}
+            {/* Column 2: Focus Areas */}
             <div className="space-y-3.5">
               <h4 className="text-xs font-mono font-semibold uppercase tracking-wider text-[#F2EAD3]/70">
                 Focus
@@ -128,22 +81,27 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <ul className="space-y-2.5 text-sm font-sans text-[#F2EAD3]/80">
                 <li>
                   <span className="hover:text-white transition-colors duration-150 cursor-default">
-                    Neural Audio
+                    Artificial Intelligence
                   </span>
                 </li>
                 <li>
                   <span className="hover:text-white transition-colors duration-150 cursor-default">
-                    Multi-Agent AI
+                    Data
                   </span>
                 </li>
                 <li>
                   <span className="hover:text-white transition-colors duration-150 cursor-default">
-                    Bioacoustics ML
+                    Machine Learning
                   </span>
                 </li>
                 <li>
                   <span className="hover:text-white transition-colors duration-150 cursor-default">
-                    Design Systems
+                    Deep Learning
+                  </span>
+                </li>
+                <li>
+                  <span className="hover:text-white transition-colors duration-150 cursor-default">
+                    Full-Stack Systems
                   </span>
                 </li>
               </ul>
@@ -230,4 +188,3 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     </footer>
   );
 };
-

@@ -1,12 +1,11 @@
 export interface TechItem {
   id: string;
-  number: string;
   name: string;
   shortName?: string;
   tier: 1 | 2 | 3 | 4;
   category: 'Core Languages' | 'Frontend & Frameworks' | 'AI & Machine Learning' | 'Backend, DevOps & Tools';
-  xPercent: number; // 0 to 100% responsive position
-  yPercent: number; // 0 to 100%
+  xPercent: number;
+  yPercent: number;
   description: string;
   tags: string[];
   iconType:
@@ -16,219 +15,323 @@ export interface TechItem {
     | 'react'
     | 'nextjs'
     | 'tailwind'
-    | 'flutter'
-    | 'pytorch'
-    | 'opencv'
-    | 'nlp'
-    | 'llm'
     | 'fastapi'
+    | 'pytorch'
+    | 'tensorflow'
+    | 'scikitlearn'
+    | 'xgboost'
+    | 'numpy'
+    | 'pandas'
+    | 'huggingface'
+    | 'opencv'
     | 'docker'
     | 'postgresql'
+    | 'mysql'
     | 'supabase'
-    | 'linux';
+    | 'git'
+    | 'github'
+    | 'figma'
+    | 'antigravity'
+    | 'claude'
+    | 'chatgpt'
+    | 'gemini';
 }
 
 export const techStackList: TechItem[] = [
-  // Tier 1 - Core Languages
+  // ================= TIER 1: CORE LANGUAGES =================
   {
     id: 'python',
-    number: '01',
     name: 'Python',
     tier: 1,
     category: 'Core Languages',
     xPercent: 28,
     yPercent: 18,
-    description: 'Primary language for AI research, backend systems and automation.',
-    tags: ['AI', 'BACKEND', 'AUTOMATION'],
+    description: 'Primary language for AI/ML research, numerical computing, asynchronous backend architectures, and automated pipelines.',
+    tags: ['AI / ML', 'BACKEND', 'DATA SCIENCE'],
     iconType: 'python',
   },
   {
     id: 'typescript',
-    number: '02',
     name: 'TypeScript',
     shortName: 'TS',
     tier: 1,
     category: 'Core Languages',
     xPercent: 52,
     yPercent: 23,
-    description: 'Type-safe architectural foundation for scalable web and system infrastructure.',
+    description: 'Statically typed JavaScript superset powering scalable, type-safe full-stack software architectures and reliable APIs.',
     tags: ['FULL-STACK', 'TYPE SAFETY', 'SCALABILITY'],
     iconType: 'typescript',
   },
   {
     id: 'javascript',
-    number: '03',
     name: 'JavaScript',
     shortName: 'JS',
     tier: 1,
     category: 'Core Languages',
     xPercent: 79,
     yPercent: 24,
-    description: 'Core web engine for asynchronous dynamic interfaces and client-side runtimes.',
-    tags: ['FRONTEND', 'ASYNC', 'WEB RUNTIMES'],
+    description: 'Core interactive web language for dynamic client-side runtime, asynchronous event handling, and modern browser interfaces.',
+    tags: ['FRONTEND', 'ASYNC', 'WEB ENGINE'],
     iconType: 'javascript',
   },
 
-  // Tier 2 - Frontend & Frameworks
+  // ================= TIER 2: FRONTEND & FRAMEWORKS =================
   {
     id: 'react',
-    number: '04',
     name: 'React',
     tier: 2,
     category: 'Frontend & Frameworks',
-    xPercent: 19,
+    xPercent: 18,
     yPercent: 41,
-    description: 'Declarative component paradigm powering high-performance reactive interfaces.',
-    tags: ['FRONTEND', 'REACTIVE UI', 'ARCHITECTURE'],
+    description: 'Declarative component-driven frontend library powering high-performance, modular, and reactive user interfaces.',
+    tags: ['FRONTEND', 'REACTIVE UI', 'COMPONENTS'],
     iconType: 'react',
   },
   {
     id: 'nextjs',
-    number: '05',
     name: 'Next.js',
     shortName: 'N',
     tier: 2,
     category: 'Frontend & Frameworks',
-    xPercent: 41,
+    xPercent: 42,
     yPercent: 44,
-    description: 'Production React framework with SSR, streaming server components and edge rendering.',
-    tags: ['SSR / EDGE', 'FULL-STACK', 'PERFORMANCE'],
+    description: 'Production React framework featuring Server-Side Rendering (SSR), Server Components, and edge-optimized routing.',
+    tags: ['FULL-STACK', 'SSR / EDGE', 'REACT FRAMEWORK'],
     iconType: 'nextjs',
   },
   {
     id: 'tailwind',
-    number: '06',
     name: 'Tailwind CSS',
     tier: 2,
     category: 'Frontend & Frameworks',
-    xPercent: 63,
+    xPercent: 66,
     yPercent: 45,
-    description: 'Design-system utility engine for crafted mathematical layouts and typography.',
+    description: 'Utility-first CSS framework for crafting bespoke design systems, fluid responsive layouts, and modern UI/UX.',
     tags: ['DESIGN SYSTEM', 'RESPONSIVE', 'UI/UX'],
     iconType: 'tailwind',
   },
   {
-    id: 'flutter',
-    number: '07',
-    name: 'Flutter',
+    id: 'fastapi',
+    name: 'FastAPI',
     tier: 2,
     category: 'Frontend & Frameworks',
-    xPercent: 85,
-    yPercent: 46,
-    description: 'Cross-platform native canvas framework for fluid multi-device mobile experiences.',
-    tags: ['MOBILE', 'CROSS-PLATFORM', 'DART'],
-    iconType: 'flutter',
+    xPercent: 88,
+    yPercent: 43,
+    description: 'High-performance modern Python web framework for building asynchronous RESTful APIs, streaming microservices, and AI inference endpoints.',
+    tags: ['WEB FRAMEWORK', 'ASYNC APIS', 'HIGH PERF'],
+    iconType: 'fastapi',
   },
 
-  // Tier 3 - AI & Machine Learning
+  // ================= TIER 3: AI & MACHINE LEARNING =================
   {
     id: 'pytorch',
-    number: '08',
     name: 'PyTorch',
     tier: 3,
     category: 'AI & Machine Learning',
-    xPercent: 19,
+    xPercent: 12,
     yPercent: 63,
-    description: 'Deep learning research framework for neural training, latent representations and tensors.',
-    tags: ['DEEP LEARNING', 'TENSORS', 'NEURAL NETS'],
+    description: 'Leading deep learning research framework for autograd tensor computation, neural network training, and AI experimentation.',
+    tags: ['DEEP LEARNING', 'TENSORS', 'NEURAL NETWORKS'],
     iconType: 'pytorch',
   },
   {
+    id: 'tensorflow',
+    name: 'TensorFlow',
+    tier: 3,
+    category: 'AI & Machine Learning',
+    xPercent: 24,
+    yPercent: 66,
+    description: 'Comprehensive open-source machine learning platform for building and deploying production-scale deep learning models.',
+    tags: ['DEEP LEARNING', 'PRODUCTION ML', 'MODEL TRAINING'],
+    iconType: 'tensorflow',
+  },
+  {
+    id: 'scikitlearn',
+    name: 'Scikit-Learn',
+    tier: 3,
+    category: 'AI & Machine Learning',
+    xPercent: 37,
+    yPercent: 64,
+    description: 'Standard machine learning library for classification, regression, clustering, dimensionality reduction, and model evaluation.',
+    tags: ['CLASSICAL ML', 'STATISTICS', 'PREDICTIVE AI'],
+    iconType: 'scikitlearn',
+  },
+  {
+    id: 'xgboost',
+    name: 'XGBoost',
+    tier: 3,
+    category: 'AI & Machine Learning',
+    xPercent: 50,
+    yPercent: 67,
+    description: 'Optimized gradient boosting library designed for high-speed execution and state-of-the-art accuracy on tabular datasets.',
+    tags: ['GRADIENT BOOSTING', 'TABULAR DATA', 'PREDICTIVE MODELS'],
+    iconType: 'xgboost',
+  },
+  {
+    id: 'numpy',
+    name: 'NumPy',
+    tier: 3,
+    category: 'AI & Machine Learning',
+    xPercent: 63,
+    yPercent: 64,
+    description: 'Fundamental package for scientific computing with powerful multidimensional array manipulation, linear algebra, and matrices.',
+    tags: ['NUMERICAL COMPUTING', 'MATRICES', 'LINEAR ALGEBRA'],
+    iconType: 'numpy',
+  },
+  {
+    id: 'pandas',
+    name: 'Pandas',
+    tier: 3,
+    category: 'AI & Machine Learning',
+    xPercent: 75,
+    yPercent: 67,
+    description: 'High-performance tabular data structures and DataFrame analysis toolkit for data cleaning, exploration, and ETL pipelines.',
+    tags: ['DATA ANALYSIS', 'DATAFRAMES', 'ETL PIPELINES'],
+    iconType: 'pandas',
+  },
+  {
+    id: 'huggingface',
+    name: 'Hugging Face',
+    tier: 3,
+    category: 'AI & Machine Learning',
+    xPercent: 87,
+    yPercent: 64,
+    description: 'Leading hub and ecosystem for state-of-the-art transformer architectures, open-source model repositories, and NLP pipelines.',
+    tags: ['TRANSFORMERS', 'NLP', 'OPEN-SOURCE AI'],
+    iconType: 'huggingface',
+  },
+  {
     id: 'opencv',
-    number: '09',
     name: 'OpenCV',
     tier: 3,
     category: 'AI & Machine Learning',
-    xPercent: 39,
-    yPercent: 67,
-    description: 'Computer vision library for spatial feature extraction, image pipelines and tracking.',
-    tags: ['COMPUTER VISION', 'DSP', 'IMAGE PROC'],
+    xPercent: 96,
+    yPercent: 66,
+    description: 'Real-time computer vision and image processing library for spatial feature extraction, filtering, and video tracking.',
+    tags: ['COMPUTER VISION', 'IMAGE PROCESSING', 'SPATIAL AI'],
     iconType: 'opencv',
   },
-  {
-    id: 'nlp',
-    number: '10',
-    name: 'NLP',
-    tier: 3,
-    category: 'AI & Machine Learning',
-    xPercent: 58,
-    yPercent: 66,
-    description: 'Natural language pipelines, transformers, tokenization and semantic vector search.',
-    tags: ['TRANSFORMERS', 'SEMANTICS', 'EMBEDDINGS'],
-    iconType: 'nlp',
-  },
-  {
-    id: 'llms',
-    number: '11',
-    name: 'LLMs',
-    tier: 3,
-    category: 'AI & Machine Learning',
-    xPercent: 78,
-    yPercent: 69,
-    description: 'Large language model orchestration, multi-agent frameworks, prompt engineering and RAG.',
-    tags: ['AGENTIC AI', 'RAG PIPELINES', 'PROMPT ENG'],
-    iconType: 'llm',
-  },
 
-  // Tier 4 - Backend, DevOps & Tools
-  {
-    id: 'fastapi',
-    number: '12',
-    name: 'FastAPI',
-    tier: 4,
-    category: 'Backend, DevOps & Tools',
-    xPercent: 19,
-    yPercent: 84,
-    description: 'High-throughput async Python framework serving live AI model inference endpoints.',
-    tags: ['ASYNC APIS', 'MICROSERVICES', 'HIGH PERF'],
-    iconType: 'fastapi',
-  },
+  // ================= TIER 4: BACKEND, DEVOPS & TOOLS =================
   {
     id: 'docker',
-    number: '13',
     name: 'Docker',
     tier: 4,
     category: 'Backend, DevOps & Tools',
-    xPercent: 37,
-    yPercent: 88,
-    description: 'Containerization standard ensuring idempotent deployments and reproducible builds.',
+    xPercent: 8,
+    yPercent: 84,
+    description: 'Industry-standard containerization platform ensuring isolated, reproducible builds and idempotent system deployments.',
     tags: ['CONTAINERS', 'DEVOPS', 'ISOLATION'],
     iconType: 'docker',
   },
   {
     id: 'postgresql',
-    number: '14',
     name: 'PostgreSQL',
     tier: 4,
     category: 'Backend, DevOps & Tools',
-    xPercent: 55,
-    yPercent: 86,
-    description: 'ACID-compliant relational database for structured datasets and complex querying.',
-    tags: ['RELATIONAL', 'SQL', 'TRANSACTIONS'],
+    xPercent: 17,
+    yPercent: 88,
+    description: 'Enterprise-grade ACID-compliant open-source relational database built for complex queries and high transactional integrity.',
+    tags: ['RELATIONAL DB', 'SQL', 'ACID'],
     iconType: 'postgresql',
   },
   {
+    id: 'mysql',
+    name: 'MySQL',
+    tier: 4,
+    category: 'Backend, DevOps & Tools',
+    xPercent: 26,
+    yPercent: 85,
+    description: 'Proven and scalable relational database management system (RDBMS) for structured data storage and rapid querying.',
+    tags: ['DATABASE', 'SQL', 'RDBMS'],
+    iconType: 'mysql',
+  },
+  {
     id: 'supabase',
-    number: '15',
     name: 'Supabase',
     tier: 4,
     category: 'Backend, DevOps & Tools',
-    xPercent: 73,
-    yPercent: 89,
-    description: 'Real-time database layer combining Postgres primitives, instant auth and edge APIs.',
-    tags: ['REALTIME', 'POSTGRES', 'AUTH'],
+    xPercent: 35,
+    yPercent: 88,
+    description: 'Open-source Backend-as-a-Service on top of Postgres with instant real-time subscriptions, auth gates, and edge functions.',
+    tags: ['BAAS', 'REALTIME', 'POSTGRES BACKEND'],
     iconType: 'supabase',
   },
   {
-    id: 'linux',
-    number: '16',
-    name: 'Linux',
+    id: 'git',
+    name: 'Git',
     tier: 4,
     category: 'Backend, DevOps & Tools',
-    xPercent: 88,
-    yPercent: 86,
-    description: 'POSIX environment for server orchestration, headless research clusters and Cloud Run.',
-    tags: ['POSIX SHELL', 'KERNEL', 'SERVERS'],
-    iconType: 'linux',
+    xPercent: 44,
+    yPercent: 85,
+    description: 'Distributed cryptographic version control system tracking branching workflows, code provenance, and release lifecycles.',
+    tags: ['VERSION CONTROL', 'BRANCHING', 'SOURCE CODE'],
+    iconType: 'git',
+  },
+  {
+    id: 'github',
+    name: 'GitHub',
+    tier: 4,
+    category: 'Backend, DevOps & Tools',
+    xPercent: 53,
+    yPercent: 88,
+    description: 'Cloud repository platform powering developer collaboration, automated CI/CD via GitHub Actions, and code review.',
+    tags: ['CODE HOSTING', 'CI/CD ACTIONS', 'COLLABORATION'],
+    iconType: 'github',
+  },
+  {
+    id: 'figma',
+    name: 'Figma',
+    tier: 4,
+    category: 'Backend, DevOps & Tools',
+    xPercent: 62,
+    yPercent: 85,
+    description: 'Collaborative vector interface design and wireframing tool for interactive prototypes and scalable design systems.',
+    tags: ['UI/UX DESIGN', 'PROTOTYPING', 'WIREFRAMES'],
+    iconType: 'figma',
+  },
+  {
+    id: 'antigravity',
+    name: 'Antigravity',
+    tier: 4,
+    category: 'Backend, DevOps & Tools',
+    xPercent: 71,
+    yPercent: 88,
+    description: 'Agentic development platform and intelligent AI orchestration environment for advanced coding and tool automation.',
+    tags: ['AGENTIC AI', 'DEV PLATFORM', 'AI HARNESS'],
+    iconType: 'antigravity',
+  },
+  {
+    id: 'claude',
+    name: 'Claude',
+    tier: 4,
+    category: 'Backend, DevOps & Tools',
+    xPercent: 80,
+    yPercent: 85,
+    description: 'Frontier AI reasoning model by Anthropic specialized in deep logical analysis, agentic workflows, and complex coding.',
+    tags: ['ANTHROPIC AI', 'REASONING', 'AI COPILOT'],
+    iconType: 'claude',
+  },
+  {
+    id: 'chatgpt',
+    name: 'ChatGPT',
+    tier: 4,
+    category: 'Backend, DevOps & Tools',
+    xPercent: 89,
+    yPercent: 88,
+    description: 'Advanced generative AI model by OpenAI for architecture ideation, code debugging, algorithmic acceleration, and synthesis.',
+    tags: ['OPENAI', 'GENERATIVE AI', 'PRODUCTIVITY'],
+    iconType: 'chatgpt',
+  },
+  {
+    id: 'gemini',
+    name: 'Gemini',
+    tier: 4,
+    category: 'Backend, DevOps & Tools',
+    xPercent: 98,
+    yPercent: 85,
+    description: 'Next-generation multimodal foundation model by Google offering massive context windows across code, text, and visual inputs.',
+    tags: ['MULTIMODAL AI', 'GOOGLE AI', 'LARGE CONTEXT'],
+    iconType: 'gemini',
   },
 ];

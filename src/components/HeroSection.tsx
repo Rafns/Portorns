@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'motion/react';
 
 const TRIPTYCH_IMAGE_URL = '/assets/monochrome_highway_trees.jpg';
 
@@ -292,54 +293,119 @@ export const HeroSection: React.FC<HeroSectionProps> = () => {
 
         {/* Giant Centered Typography across all 3 panels: "HI I'M RAFA" with Luxury Reveal from Bottom */}
         <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none px-2 sm:px-6 overflow-hidden">
-          <div
-            className={`transition-all duration-1000 ease-out will-change-transform ${
-              isLoaded
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-24'
-            }`}
-            style={{
-              transitionDelay: '700ms',
-              transform: isLoaded
-                ? `translate3d(${mouseOffset.x * 12}px, ${
-                    mouseOffset.y * 9
-                  }px, 0)`
-                : undefined,
+          <motion.div
+            className="will-change-transform z-10"
+            animate={{
+              x: mouseOffset.x * 14,
+              y: mouseOffset.y * 10,
+              rotateX: -mouseOffset.y * 3,
+              rotateY: mouseOffset.x * 4,
             }}
+            transition={{ type: 'spring', stiffness: 120, damping: 18 }}
+            style={{ perspective: 1000 }}
           >
             {/* Fixed Spacing & Letter-spacing: Clean gap separation between HI, I'M, and RAFA */}
             <h1
               id="hero-title"
-              className="font-display flex items-center justify-center gap-3 sm:gap-6 md:gap-8 lg:gap-11 font-black text-[#FFFFFF] drop-shadow-[0_14px_45px_rgba(0,0,0,0.7)] select-none text-center leading-none whitespace-nowrap text-4xl sm:text-6xl md:text-8xl lg:text-[8.4rem] xl:text-[9.5rem]"
+              className="font-display flex items-center justify-center gap-3 sm:gap-6 md:gap-8 lg:gap-11 font-black text-[#FFFFFF] drop-shadow-[0_16px_50px_rgba(0,0,0,0.85)] select-none text-center leading-none whitespace-nowrap text-4xl sm:text-6xl md:text-8xl lg:text-[8.4rem] xl:text-[9.5rem]"
               style={{
                 fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
               }}
             >
-              {/* Word 1: HI with generous breathing room */}
-              <span
-                className="inline-block"
-                style={{ letterSpacing: '-0.015em' }}
-              >
-                HI
+              {/* Word 1: HI */}
+              <span className="inline-flex overflow-hidden py-1">
+                {['H', 'I'].map((char, index) => (
+                  <motion.span
+                    key={`hi-${index}`}
+                    initial={{ y: '130%', opacity: 0, rotateX: 55, filter: 'blur(10px)' }}
+                    animate={
+                      isLoaded
+                        ? { y: 0, opacity: 1, rotateX: 0, filter: 'blur(0px)' }
+                        : { y: '130%', opacity: 0, rotateX: 55, filter: 'blur(10px)' }
+                    }
+                    transition={{
+                      duration: 0.95,
+                      delay: 0.35 + index * 0.08,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    whileHover={{
+                      y: -10,
+                      scale: 1.06,
+                      color: '#F2EAD3',
+                      textShadow: '0 0 30px rgba(242, 234, 211, 0.7)',
+                      transition: { type: 'spring', stiffness: 450, damping: 14 },
+                    }}
+                    className="inline-block pointer-events-auto cursor-default transition-colors duration-200"
+                    style={{ letterSpacing: '-0.02em' }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
               </span>
 
-              {/* Word 2: I'M with distinct spacing */}
-              <span
-                className="inline-block"
-                style={{ letterSpacing: '-0.015em' }}
-              >
-                I'M
+              {/* Word 2: I'M */}
+              <span className="inline-flex overflow-hidden py-1">
+                {['I', "'", 'M'].map((char, index) => (
+                  <motion.span
+                    key={`im-${index}`}
+                    initial={{ y: '130%', opacity: 0, rotateX: 55, filter: 'blur(10px)' }}
+                    animate={
+                      isLoaded
+                        ? { y: 0, opacity: 1, rotateX: 0, filter: 'blur(0px)' }
+                        : { y: '130%', opacity: 0, rotateX: 55, filter: 'blur(10px)' }
+                    }
+                    transition={{
+                      duration: 0.95,
+                      delay: 0.52 + index * 0.08,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    whileHover={{
+                      y: -10,
+                      scale: 1.06,
+                      color: '#F2EAD3',
+                      textShadow: '0 0 30px rgba(242, 234, 211, 0.7)',
+                      transition: { type: 'spring', stiffness: 450, damping: 14 },
+                    }}
+                    className="inline-block pointer-events-auto cursor-default transition-colors duration-200"
+                    style={{ letterSpacing: char === "'" ? '0.01em' : '-0.02em' }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
               </span>
 
-              {/* Word 3: RAFA with proper letter-spacing so letters don't stick */}
-              <span
-                className="inline-block"
-                style={{ letterSpacing: '-0.015em' }}
-              >
-                RAFA
+              {/* Word 3: RAFA */}
+              <span className="inline-flex overflow-hidden py-1">
+                {['R', 'A', 'F', 'A'].map((char, index) => (
+                  <motion.span
+                    key={`rafa-${index}`}
+                    initial={{ y: '130%', opacity: 0, rotateX: 55, filter: 'blur(10px)' }}
+                    animate={
+                      isLoaded
+                        ? { y: 0, opacity: 1, rotateX: 0, filter: 'blur(0px)' }
+                        : { y: '130%', opacity: 0, rotateX: 55, filter: 'blur(10px)' }
+                    }
+                    transition={{
+                      duration: 0.95,
+                      delay: 0.78 + index * 0.08,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    whileHover={{
+                      y: -10,
+                      scale: 1.06,
+                      color: '#F2EAD3',
+                      textShadow: '0 0 35px rgba(242, 234, 211, 0.8)',
+                      transition: { type: 'spring', stiffness: 450, damping: 14 },
+                    }}
+                    className="inline-block pointer-events-auto cursor-default transition-colors duration-200"
+                    style={{ letterSpacing: '-0.02em' }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
               </span>
             </h1>
-          </div>
+          </motion.div>
         </div>
       </div>
 
