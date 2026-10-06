@@ -39,7 +39,7 @@ export const ContactSection: React.FC = () => {
             {/* Resume Download Action Button */}
             <div>
               <a
-                href="https://drive.google.com/file/d/1DoH40GstAaanhfjMFm1EpzKf4gSxK7zB/view?usp=sharing"
+                href="https://drive.google.com/file/d/1kV8vszzS_x0X5hERGjaIGIO7S-VXMtN_/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#F2EAD3] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider uppercase hover:bg-white transition-all duration-300 shadow-xl hover:shadow-2xl group cursor-pointer"
