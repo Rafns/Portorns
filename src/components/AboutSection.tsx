@@ -97,16 +97,17 @@ export const AboutSection: React.FC = () => {
 
                 {/* Core Highlighted Statement */}
                 <p className="font-sans text-base sm:text-lg text-[#F2EAD3] font-medium leading-relaxed">
-                  I am Undergraduate Computer Science student at BINUS University aspiring to pursue a career in{' '}
+                  I am an undergraduate Computer Science student at BINUS University specializing in{' '}
+                  <span className="text-[#FFFFFF] font-semibold">Intelligent Systems</span>, aspiring to pursue a career in{' '}
                   <span className="text-[#FFFFFF] font-bold underline decoration-[#F2EAD3] decoration-2 underline-offset-4">
                     Artificial Intelligence and Data
                   </span>
-                  , with interests in Machine Learning, Deep Learning, Natural Language Processing, and applied research.
+                  .
                 </p>
 
                 {/* Description Paragraph */}
                 <p className="font-sans text-sm sm:text-base text-[#F2EAD3]/90 font-medium leading-relaxed">
-                  Experienced in developing technology-driven projects and exploring data-driven and intelligent solutions to real-world problems. Passionate about building impactful technology and continuously learning, developing new skills, and keeping up with emerging technologies in AI and data.
+                  Experienced in building end-to-end Machine Learning, NLP, and Computer Vision models, successfully achieving over <span className="text-[#FFFFFF] font-semibold">90% accuracy</span> in multiple projects. Passionate about exploring data-driven solutions, conducting EDA, and continuously keeping up with emerging AI technologies to build impactful applications.
                 </p>
               </div>
 

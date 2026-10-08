@@ -38,7 +38,9 @@ export interface JourneyExperience {
   title: string;
   year: string;
   role?: string;
+  category?: string;
   shortDescription: string;
+  highlights?: string[];
   tags: string[];
   imageUrl: string;
   imageAlt: string;

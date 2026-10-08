@@ -16,7 +16,7 @@ const TRAITS_DATA: TraitItem[] = [
     category: 'TRAIT',
     title: 'Detail-Oriented',
     description:
-      'Cermat dalam merancang arsitektur sistem, validasi edge-cases, ketat dalam standarisasi tipe data, serta menjaga performa kode tetap rapi dan terdokumentasi.',
+      'Meticulous in system architecture design, rigorous edge-case validation, strict type standardization, and maintaining clean, well-documented codebases.',
     highlight: 'Rigorous Precision',
     number: '01',
   },
@@ -25,7 +25,7 @@ const TRAITS_DATA: TraitItem[] = [
     category: 'COLLABORATION',
     title: 'Teamwork & Synergy',
     description:
-      'Kolaboratif lintas disiplin bersama software engineers, desainer, dan pemangku kepentingan untuk menyelaraskan visi teknis menjadi produk bernilai nyata.',
+      'Collaborative across multidisciplinary teams alongside software engineers, designers, and stakeholders to transform technical roadmaps into high-impact products.',
     highlight: 'Unified Velocity',
     number: '02',
   },
@@ -34,7 +34,7 @@ const TRAITS_DATA: TraitItem[] = [
     category: 'COMMUNICATION',
     title: 'Effective Communication',
     description:
-      'Mampu mengartikulasikan konsep AI dan logika rekayasa perangkat lunak yang rumit menjadi penjelasan yang lugas, transparan, dan mudah dipahami.',
+      'Skilled at translating complex machine learning concepts, algorithmic decisions, and software architectures into clear, transparent, and actionable stakeholder insights.',
     highlight: 'Technical Clarity',
     number: '03',
   },
@@ -43,7 +43,7 @@ const TRAITS_DATA: TraitItem[] = [
     category: 'MINDSET',
     title: 'First-Principles Thinking',
     description:
-      'Menganalisis akar masalah dari fondasi logika dasar daripada sekadar menambal gejala, melahirkan solusi arsitektur yang tahan uji dan skalabel.',
+      'Deconstructs complex challenges down to foundational logic rather than patching symptoms, engineering resilient, scalable, and mathematically sound solutions.',
     highlight: 'Root-Cause Focus',
     number: '04',
   },
@@ -52,7 +52,7 @@ const TRAITS_DATA: TraitItem[] = [
     category: 'GROWTH',
     title: 'Adaptive Learning',
     description:
-      'Cepat menguasai teknologi, arsitektur deep learning, dan metodologi pengembangan baru seiring evolusi pesat lanskap industri AI global.',
+      'Rapidly masters emerging AI frameworks, state-of-the-art model architectures, and modern development paradigms in a fast-evolving technological landscape.',
     highlight: 'Rapid Agility',
     number: '05',
   },
@@ -61,7 +61,7 @@ const TRAITS_DATA: TraitItem[] = [
     category: 'WORK ETHIC',
     title: 'Radical Ownership',
     description:
-      'Bertanggung jawab penuh atas setiap baris kode dari tahap konseptual, benchmarking, implementasi pipeline, hingga pemantauan di produksi.',
+      'Takes end-to-end responsibility for every line of code from initial ideation, benchmarking, and pipeline deployment to production observability.',
     highlight: 'End-to-End Care',
     number: '06',
   },
@@ -70,7 +70,7 @@ const TRAITS_DATA: TraitItem[] = [
     category: 'PHILOSOPHY',
     title: 'User-Centric Empathy',
     description:
-      'Memandang teknologi sebagai sarana memberdayakan manusia, mengintegrasikan kecerdasan mesin dengan pengalaman antarmuka yang intuitif dan bermakna.',
+      'Views technology as a catalyst to empower human potential, coupling intelligent model capabilities with empathetic, transparent, and intuitive user experiences.',
     highlight: 'Human-First AI',
     number: '07',
   },
@@ -248,7 +248,7 @@ export const TraitCardsDeck: React.FC = () => {
             </p>
             <div className="flex items-center justify-between gap-2 mt-2.5 pt-2 border-t border-white/[0.06]">
               <span className="font-mono text-[11px] text-[#F2EAD3]/60 tracking-wider uppercase">
-                — John Johnson
+                - John Johnson
               </span>
               <span className="text-[10px] font-mono text-[#F2EAD3]/40 tracking-wider">
                 Drag / tap card to fling →

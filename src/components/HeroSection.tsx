@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
+import { Github, Linkedin, Mail, FileText, ArrowUpRight, ChevronDown } from 'lucide-react';
 
 const TRIPTYCH_IMAGE_URL = '/assets/monochrome_highway_trees.jpg';
 
@@ -8,7 +9,7 @@ interface HeroSectionProps {
   onLearnMore: () => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = () => {
+export const HeroSection: React.FC<HeroSectionProps> = ({ onLearnMore }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -275,18 +276,63 @@ export const HeroSection: React.FC<HeroSectionProps> = () => {
             }`}
             style={{ transitionDelay: '480ms' }}
           >
-            {/* Bottom Left: THE NEW FRONTIER with enhanced contrast */}
+            {/* Bottom Right / Panel 3: Quick Connect & Direct Resume */}
             <div
-              className="transition-transform duration-300 ease-out will-change-transform"
+              className="pointer-events-auto transition-transform duration-300 ease-out will-change-transform flex flex-col gap-2.5"
               style={{
                 transform: `translate3d(${mouseOffset.x * 6}px, ${
                   mouseOffset.y * 4
                 }px, 0)`,
               }}
             >
-              <span className="font-mono text-xs sm:text-sm font-semibold tracking-widest text-[#FFFFFF] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
-                THE NEW FRONTIER
+              <span className="font-mono text-[10px] sm:text-[11px] tracking-widest text-[#F2EAD3]/75 uppercase font-semibold drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
+                Quick Connect & Resume
               </span>
+              <div className="flex flex-wrap items-center gap-2">
+                {/* Direct Resume Button */}
+                <a
+                  href="https://drive.google.com/file/d/1kV8vszzS_x0X5hERGjaIGIO7S-VXMtN_/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Direct Resume PDF"
+                  className="group inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#F2EAD3] hover:bg-white text-[#0A0A0A] font-mono text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-lg hover:scale-105 active:scale-95"
+                >
+                  <FileText className="w-3.5 h-3.5" />
+                  <span>Resume</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+
+                {/* GitHub */}
+                <a
+                  href="https://github.com/Rafns"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
+                  className="group flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-black/60 hover:bg-[#F2EAD3] border border-white/15 hover:border-[#F2EAD3] text-neutral-300 hover:text-black backdrop-blur-md transition-all duration-300 shadow-lg hover:scale-110 active:scale-95"
+                >
+                  <Github className="w-4 h-4 sm:w-4.5 sm:h-4.5 transition-transform group-hover:scale-110" />
+                </a>
+
+                {/* LinkedIn */}
+                <a
+                  href="https://www.linkedin.com/in/rafael-nandana-s-814257314"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn Profile"
+                  className="group flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-black/60 hover:bg-[#F2EAD3] border border-white/15 hover:border-[#F2EAD3] text-neutral-300 hover:text-black backdrop-blur-md transition-all duration-300 shadow-lg hover:scale-110 active:scale-95"
+                >
+                  <Linkedin className="w-4 h-4 sm:w-4.5 sm:h-4.5 transition-transform group-hover:scale-110" />
+                </a>
+
+                {/* Email */}
+                <a
+                  href="mailto:nandana.sambodo@gmail.com"
+                  aria-label="Send Email"
+                  className="group flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-black/60 hover:bg-[#F2EAD3] border border-white/15 hover:border-[#F2EAD3] text-neutral-300 hover:text-black backdrop-blur-md transition-all duration-300 shadow-lg hover:scale-110 active:scale-95"
+                >
+                  <Mail className="w-4 h-4 sm:w-4.5 sm:h-4.5 transition-transform group-hover:scale-110" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -405,13 +451,53 @@ export const HeroSection: React.FC<HeroSectionProps> = () => {
                 ))}
               </span>
             </h1>
+
+            {/* Professional Subtitle Role */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={
+                isLoaded
+                  ? { y: 0, opacity: 1 }
+                  : { y: 20, opacity: 0 }
+              }
+              transition={{
+                duration: 0.85,
+                delay: 1.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="mt-3 sm:mt-5 flex items-center justify-center gap-2 sm:gap-3 pointer-events-auto"
+            >
+              <span className="hidden sm:inline-block h-[1px] w-6 sm:w-10 bg-gradient-to-r from-transparent to-[#F2EAD3]/50" />
+              <span className="font-mono text-[10px] sm:text-xs md:text-sm font-semibold tracking-[0.22em] sm:tracking-[0.28em] text-[#F2EAD3] uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
+                AI Engineer & Data · Intelligent Systems
+              </span>
+              <span className="hidden sm:inline-block h-[1px] w-6 sm:w-10 bg-gradient-to-l from-transparent to-[#F2EAD3]/50" />
+            </motion.div>
           </motion.div>
         </div>
       </div>
 
-      {/* Bottom Architectural Hatch Pattern Stripe */}
-      <div className="w-full overflow-hidden text-neutral-600 font-mono text-[11px] sm:text-xs select-none opacity-60 leading-none truncate py-2">
-        {slashPattern}
+      {/* Bottom Architectural Hatch Pattern Stripe & Scroll Indicator (Point 2) */}
+      <div className="w-full flex items-center justify-between pt-3 pb-1 text-neutral-500 font-mono text-[11px] sm:text-xs select-none">
+        <div className="hidden sm:block opacity-40 overflow-hidden truncate max-w-[30%]">
+          {slashPattern}
+        </div>
+
+        {/* Scroll Cue Action */}
+        <button
+          type="button"
+          onClick={onLearnMore}
+          className="mx-auto inline-flex items-center gap-2 text-[#F2EAD3]/85 hover:text-white px-4 py-1.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-[#F2EAD3]/40 transition-all duration-300 cursor-pointer group shadow-lg"
+        >
+          <span className="tracking-[0.2em] uppercase font-mono text-[10px] sm:text-[11px] font-medium">
+            Scroll to explore
+          </span>
+          <ChevronDown className="w-3.5 h-3.5 text-[#F2EAD3] group-hover:translate-y-0.5 transition-transform animate-bounce" />
+        </button>
+
+        <div className="hidden sm:block opacity-40 overflow-hidden truncate max-w-[30%]">
+          {slashPattern}
+        </div>
       </div>
     </section>
   );

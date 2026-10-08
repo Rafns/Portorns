@@ -139,10 +139,10 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   key={project.id}
                   id={`project-card-${project.id}`}
                   onClick={() => onSelectProject(project)}
-                  className="w-full sm:w-[calc(50%-12px)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start group relative bg-[#0B0F19] hover:bg-[#0E1526] border border-neutral-800/90 hover:border-neutral-700 rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:shadow-[0_16px_40px_rgba(2,132,199,0.14)] cursor-pointer"
+                  className="w-full sm:w-[calc(50%-12px)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start group relative bg-[#0E1015]/90 hover:bg-[#131620] border border-white/[0.08] hover:border-white/[0.22] rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:shadow-[0_16px_40px_rgba(242,234,211,0.06)] cursor-pointer"
                 >
                   {/* Top Screenshot Container with 01 / 02 / 03 Badge */}
-                  <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#070A12] border-b border-neutral-800/80">
+                  <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#070A12] border-b border-white/[0.08]">
                     {project.imageUrl ? (
                       <img
                         src={project.imageUrl}
@@ -151,8 +151,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                         className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                       />
                     ) : (
-                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#0D1322] to-[#070A12] p-6 text-center">
-                        <Sparkles className="w-8 h-8 text-[#38BDF8] mb-2 opacity-60" />
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#12141C] to-[#070A12] p-6 text-center">
+                        <Sparkles className="w-8 h-8 text-[#F2EAD3] mb-2 opacity-60" />
                         <span className="text-sm font-semibold text-neutral-300">
                           {project.title}
                         </span>
@@ -165,12 +165,12 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     </div>
 
                     {/* Top Right Quick Arrow Action Button */}
-                    <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/55 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/80 group-hover:text-white group-hover:bg-[#0284C7] group-hover:border-transparent transition-all duration-300 shadow-md">
+                    <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/55 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/80 group-hover:text-[#0A0A0A] group-hover:bg-[#F2EAD3] group-hover:border-[#F2EAD3] transition-all duration-300 shadow-md">
                       <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
 
                     {/* Bottom subtle shadow vignette inside image */}
-                    <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-[#0B0F19] to-transparent pointer-events-none" />
+                    <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-[#0E1015] to-transparent pointer-events-none" />
                   </div>
 
                   {/* Bottom Card Content */}
@@ -246,8 +246,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 aria-label={`Go to slide ${idx + 1}`}
                 className={`transition-all duration-300 cursor-pointer rounded-full ${
                   isActive
-                    ? 'w-7 h-2 bg-[#60A5FA] shadow-[0_0_10px_rgba(96,165,250,0.5)]'
-                    : 'w-2 h-2 bg-neutral-700 hover:bg-neutral-500'
+                    ? 'w-7 h-2 bg-[#F2EAD3] shadow-[0_0_12px_rgba(242,234,211,0.6)]'
+                    : 'w-2 h-2 bg-white/20 hover:bg-white/40'
                 }`}
               />
             );

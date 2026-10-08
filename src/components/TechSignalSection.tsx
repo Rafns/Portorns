@@ -14,7 +14,7 @@ const TECH_CATEGORIES = [
   { id: 'Core Languages', label: 'Languages' },
   { id: 'Frontend & Frameworks', label: 'Frontend' },
   { id: 'AI & Machine Learning', label: 'AI & ML' },
-  { id: 'Backend, DevOps & Tools', label: 'Tools & Backend' },
+  { id: 'Backend, DevOps & Tools', label: 'Backend & LLMs' },
 ];
 
 // Initial fractional distribution of nodes along the paths (0 to 1) with balanced spacing
@@ -371,7 +371,7 @@ export const TechSignalSection: React.FC<TechSignalSectionProps> = ({
                 AI & MACHINE LEARNING
               </text>
               <text x="35" y="615" fill="#FFFFFF" fillOpacity="0.38" fontSize="10" fontFamily="monospace" fontWeight="600" letterSpacing="0.2em">
-                BACKEND, DEVOPS & TOOLS
+                BACKEND, DEVOPS & LLMs
               </text>
 
               {/* Ambient Micro-dots */}
@@ -546,11 +546,26 @@ export const TechSignalSection: React.FC<TechSignalSectionProps> = ({
                     <TechIcon type={activeItem.iconType} className="w-7 h-7" />
                   </div>
 
-                  {/* Right Content: Title & Description */}
+                  {/* Right Content: Title, Mastery Level Badge & Description */}
                   <div className="flex-1 min-w-0">
-                    <h4 className="font-display text-sm sm:text-base font-bold text-[#FFFFFF] tracking-tight leading-snug">
-                      {activeItem.name}
-                    </h4>
+                    <div className="flex items-center justify-between gap-2">
+                      <h4 className="font-display text-sm sm:text-base font-bold text-[#FFFFFF] tracking-tight leading-snug">
+                        {activeItem.name}
+                      </h4>
+                      {activeItem.proficiencyLevel && (
+                        <span
+                          className={`text-[9px] font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded ${
+                            activeItem.proficiencyLevel === 'Core Stack'
+                              ? 'text-[#0A0A0A] bg-[#F2EAD3]'
+                              : activeItem.proficiencyLevel === 'LLM & AI Tooling'
+                              ? 'text-[#F2EAD3] bg-white/[0.08] border border-[#F2EAD3]/30'
+                              : 'text-neutral-400 bg-white/[0.04] border border-white/[0.06]'
+                          }`}
+                        >
+                          {activeItem.proficiencyLevel}
+                        </span>
+                      )}
+                    </div>
                     <p className="font-sans text-[11px] sm:text-xs text-[#F2EAD3] font-medium leading-relaxed mt-1">
                       {activeItem.description}
                     </p>

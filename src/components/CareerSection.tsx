@@ -10,6 +10,7 @@ import {
   Maximize2,
   X,
   ArrowRight,
+  ArrowUpRight,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -333,16 +334,21 @@ export const CareerSection: React.FC = () => {
                   >
                     {/* Top Bar: Number & Period */}
                     <div className="flex items-center justify-between gap-3 mb-4">
-                      <div className="flex items-center gap-2.5">
+                      <div className="flex flex-wrap items-center gap-2">
                         <span className="text-[11px] font-mono font-bold text-neutral-400 bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded-full">
                           {exp1.number}
                         </span>
+                        {exp1.category && (
+                          <span className="text-[10px] font-mono font-semibold text-[#F2EAD3] uppercase tracking-wider">
+                            {exp1.category}
+                          </span>
+                        )}
                         <span className="text-xs font-mono text-neutral-400 flex items-center gap-1.5">
                           <Calendar className="w-3.5 h-3.5 opacity-60" />
                           {exp1.year}
                         </span>
                       </div>
-                      <div className="w-7 h-7 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center">
+                      <div className="w-7 h-7 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center shrink-0">
                         {getMilestoneIcon(exp1.id)}
                       </div>
                     </div>
@@ -370,19 +376,33 @@ export const CareerSection: React.FC = () => {
                       </div>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-neutral-300 font-normal leading-relaxed mb-4">
-                      {exp1.shortDescription}
-                    </p>
+                    {/* Key Highlights Bullet Points */}
+                    {exp1.highlights && (
+                      <div className="space-y-2 mb-4">
+                        {exp1.highlights.map((highlight, idx) => (
+                          <div key={idx} className="flex items-start gap-2 text-xs text-neutral-300">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#F2EAD3] mt-1.5 shrink-0" />
+                            <span className="leading-relaxed">{highlight}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
-                    <div className="flex flex-wrap gap-1.5 pt-3.5 border-t border-white/[0.06]">
-                      {exp1.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-[9px] font-mono tracking-wider uppercase text-neutral-400 bg-white/[0.03] border border-white/[0.06] px-2.5 py-1 rounded-md"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                    <div className="flex items-center justify-between pt-3.5 border-t border-white/[0.06]">
+                      <div className="flex flex-wrap gap-1.5">
+                        {exp1.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[9px] font-mono tracking-wider uppercase text-neutral-400 bg-white/[0.03] border border-white/[0.06] px-2.5 py-1 rounded-md"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <span className="hidden sm:inline-flex items-center gap-1 text-[10px] font-mono text-[#F2EAD3]/80 group-hover:text-white transition-colors shrink-0 ml-2">
+                        <span>Details</span>
+                        <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </span>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -395,16 +415,16 @@ export const CareerSection: React.FC = () => {
                   transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   className="hidden lg:flex lg:col-span-6 flex-col justify-center pl-6"
                 >
-                  <div className="max-w-md">
-                    <span className="text-[10px] font-mono font-semibold uppercase tracking-[0.25em] text-neutral-500 block mb-2">
-                      01 / 03 — ACADEMIC FOUNDATION
+                  <div className="max-w-md space-y-1">
+                    <span className="text-[10px] font-mono font-semibold uppercase tracking-[0.25em] text-[#F2EAD3]/70 block">
+                      01 / 02 — ACADEMIC FOUNDATION
                     </span>
-                    <h4 className="text-xl font-bold tracking-tight text-white mb-2">
-                      Formal Computer Science & Intelligent Systems
+                    <h4 className="text-lg sm:text-xl font-bold tracking-tight text-white">
+                      Computer Science & Intelligent Systems
                     </h4>
-                    <p className="text-xs text-neutral-400 leading-relaxed">
-                      Pursuing undergraduate studies at BINUS University @ Malang, establishing deep foundations in linear algebra, algorithms, discrete structures, and artificial intelligence methodology.
-                    </p>
+                    <span className="inline-block text-xs font-mono text-neutral-400">
+                      BINUS University · Malang
+                    </span>
                   </div>
                 </motion.div>
               </div>
@@ -423,16 +443,16 @@ export const CareerSection: React.FC = () => {
                   transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   className="hidden lg:flex lg:col-span-6 flex-col justify-center items-end text-right pr-6"
                 >
-                  <div className="max-w-md">
-                    <span className="text-[10px] font-mono font-semibold uppercase tracking-[0.25em] text-neutral-500 block mb-2">
-                      02 / 03 — TECHNICAL COMMUNITY & LAB
+                  <div className="max-w-md space-y-1">
+                    <span className="text-[10px] font-mono font-semibold uppercase tracking-[0.25em] text-[#F2EAD3]/70 block">
+                      02 / 02 — TECHNICAL COMMUNITY & TRAINING
                     </span>
-                    <h4 className="text-xl font-bold tracking-tight text-white mb-2">
-                      Practical Engineering & Leadership
+                    <h4 className="text-lg sm:text-xl font-bold tracking-tight text-white">
+                      Learning & Training Acceleration
                     </h4>
-                    <p className="text-xs text-neutral-400 leading-relaxed">
-                      Participating in BNCC Learning & Training to accelerate hands-on software development, peer code reviews, collaborative sprints, and developer ecosystem building.
-                    </p>
+                    <span className="inline-block text-xs font-mono text-neutral-400">
+                      Bina Nusantara Computer Club (BNCC)
+                    </span>
                   </div>
                 </motion.div>
 
@@ -471,16 +491,21 @@ export const CareerSection: React.FC = () => {
                   >
                     {/* Top Bar: Number & Period */}
                     <div className="flex items-center justify-between gap-3 mb-4">
-                      <div className="flex items-center gap-2.5">
+                      <div className="flex flex-wrap items-center gap-2">
                         <span className="text-[11px] font-mono font-bold text-neutral-400 bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded-full">
                           {exp2.number}
                         </span>
+                        {exp2.category && (
+                          <span className="text-[10px] font-mono font-semibold text-[#F2EAD3] uppercase tracking-wider">
+                            {exp2.category}
+                          </span>
+                        )}
                         <span className="text-xs font-mono text-neutral-400 flex items-center gap-1.5">
                           <Calendar className="w-3.5 h-3.5 opacity-60" />
                           {exp2.year}
                         </span>
                       </div>
-                      <div className="w-7 h-7 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center">
+                      <div className="w-7 h-7 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center shrink-0">
                         {getMilestoneIcon(exp2.id)}
                       </div>
                     </div>
@@ -495,11 +520,11 @@ export const CareerSection: React.FC = () => {
                     </p>
 
                     {/* Image Banner */}
-                    <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden mb-4 bg-neutral-950 border border-white/[0.08] flex items-center justify-center">
+                    <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden mb-4 bg-white border border-white/[0.08] flex items-center justify-center p-4">
                       <img
                         src={exp2.imageUrl}
                         alt={exp2.imageAlt}
-                        className="w-full h-full object-contain bg-white p-6 transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-end p-3">
                         <span className="p-1.5 rounded-lg bg-black/60 backdrop-blur-md text-white">
@@ -508,19 +533,33 @@ export const CareerSection: React.FC = () => {
                       </div>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-neutral-300 font-normal leading-relaxed mb-4">
-                      {exp2.shortDescription}
-                    </p>
+                    {/* Key Highlights Bullet Points */}
+                    {exp2.highlights && (
+                      <div className="space-y-2 mb-4">
+                        {exp2.highlights.map((highlight, idx) => (
+                          <div key={idx} className="flex items-start gap-2 text-xs text-neutral-300">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#F2EAD3] mt-1.5 shrink-0" />
+                            <span className="leading-relaxed">{highlight}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
-                    <div className="flex flex-wrap gap-1.5 pt-3.5 border-t border-white/[0.06]">
-                      {exp2.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-[9px] font-mono tracking-wider uppercase text-neutral-400 bg-white/[0.03] border border-white/[0.06] px-2.5 py-1 rounded-md"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                    <div className="flex items-center justify-between pt-3.5 border-t border-white/[0.06]">
+                      <div className="flex flex-wrap gap-1.5">
+                        {exp2.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[9px] font-mono tracking-wider uppercase text-neutral-400 bg-white/[0.03] border border-white/[0.06] px-2.5 py-1 rounded-md"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <span className="hidden sm:inline-flex items-center gap-1 text-[10px] font-mono text-[#F2EAD3]/80 group-hover:text-white transition-colors shrink-0 ml-2">
+                        <span>Details</span>
+                        <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </span>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -687,10 +726,15 @@ export const CareerSection: React.FC = () => {
                 <X className="w-4 h-4" />
               </button>
 
-              <div className="flex items-center gap-2.5 mb-3">
+              <div className="flex flex-wrap items-center gap-2 mb-3">
                 <span className="text-[11px] font-mono font-bold text-neutral-400 bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded-full">
                   {selectedExperience.number}
                 </span>
+                {selectedExperience.category && (
+                  <span className="text-[10px] font-mono font-semibold text-[#F2EAD3] uppercase tracking-wider">
+                    {selectedExperience.category}
+                  </span>
+                )}
                 <span className="text-xs font-mono text-neutral-400">
                   {selectedExperience.year}
                 </span>
@@ -711,16 +755,33 @@ export const CareerSection: React.FC = () => {
                   src={selectedExperience.imageUrl}
                   alt={selectedExperience.imageAlt}
                   className={`w-full h-full ${
-                    selectedExperience.bgWhite
-                      ? 'object-contain bg-white p-8'
+                    selectedExperience.objectFit === 'contain'
+                      ? 'object-contain bg-white p-6'
                       : 'object-cover brightness-95'
                   }`}
                 />
               </div>
 
-              <p className="text-sm text-neutral-300 font-normal leading-relaxed mb-6">
+              <p className="text-sm text-neutral-300 font-normal leading-relaxed mb-4">
                 {selectedExperience.shortDescription}
               </p>
+
+              {/* Key Achievements / Responsibilities */}
+              {selectedExperience.highlights && selectedExperience.highlights.length > 0 && (
+                <div className="mb-6 space-y-2 bg-white/[0.02] border border-white/[0.06] rounded-2xl p-4">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#F2EAD3]/80 font-semibold block mb-2">
+                    Key Highlights & Impact
+                  </span>
+                  <ul className="space-y-2">
+                    {selectedExperience.highlights.map((highlight, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-neutral-300 leading-relaxed">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#F2EAD3] mt-2 shrink-0" />
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/[0.08]">
                 {selectedExperience.tags.map((tag) => (
